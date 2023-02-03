@@ -1,3 +1,4 @@
+import { log } from "console";
 import { useEffect, useRef, useState, JSX } from "uelements";
 import LargeComponent from "./Components/LargeComponent";
 import SmallComponent from "./Components/SmallComponent";
@@ -11,6 +12,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
   const [data, setdata] = useState({} as any);
   const [local, setlocal] = useState({} as any);
   const [first, setfirst] = useLocalstorage("initialvideo", []);
+  const [timingshow, settimingshow] = useState(true);
   function getingkeys() {
     let val = JSON.parse(localStorage.getItem("initialvideo")!);
     if (val?.length) {
@@ -30,20 +32,20 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
     async function data() {
       let val = await fetch(dataURL);
       let data = await val.json();
-      let kucha = JSON.parse(localStorage.getItem("initialvideo")!)?.filter(
-        (e: any) => {
-          if (e.base === base) {
-            return e;
-          } else {
-            return 0;
-          }
+      let excatindex = JSON.parse(
+        localStorage.getItem("initialvideo")!
+      )?.filter((e: any) => {
+        if (e.base === base) {
+          return e;
+        } else {
+          return 0;
         }
-      );
+      });
 
       handlestoragevals(data.record);
       setdata(data.record);
 
-      setlocal(data.record[base][kucha[0]?.count || 0]);
+      setlocal(data.record[base][excatindex[0]?.count || 0]);
     }
     data();
   }, []);
@@ -105,7 +107,6 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
     `${local.gridgap}px`
   );
 
-  
   setTimeout(() => {
     document.documentElement.style.setProperty(
       "--color-border",
@@ -265,9 +266,25 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
 
     getingkeys();
   }
+  console.log(data);
+
+  setTimeout(() => {
+    settimingshow(false);
+  }, 1000);
 
   return (
-    <div className="small-video-container-box-parent" style={cssval as any}>
+    <div
+      className={
+        !timingshow
+          ? "small-video-container-box-parent"
+          : "small-video-container-box-parent smsmsmhidden"
+      }
+      style={cssval as any}
+    >
+      <style>
+        @import
+        url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+      </style>
       {initialsize ? (
         <LargeComponent
           cssval={cssval}
@@ -287,7 +304,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
           cmpclose={cmpclose}
           data={local}
           setinitialsize={setinitialsize}
-          video={gif}
+          video={video}
           round={local?.rounded}
           onlocalchange={onlocalchange}
         />

@@ -29,3 +29,11 @@ export interface SmallComponentprops {
   round: boolean;
   onlocalchange : () => void;
 }
+
+
+export interface CustomButtomprops{
+  show: boolean;
+  buttons: never[];
+  handleChange: (e: string) => void;
+
+}

@@ -79,17 +79,20 @@
 }
 
 .overlay-thing-button {
-  display: block;
+  display: flex;
+  align-items: center;
   padding: var(--padding-y)  var(--padding-x)   ;
   border-radius: 20px;
   margin-bottom: 8px;
-  background-color: #fff;
-  color: black;
+  background-color: rgba(0, 0, 0, 0.6);
+  color:  white;
   cursor: pointer;
   font-size: 12px !important ;
   width: 100%;
-
+  text-align: left;
   isolation: isolate;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: bold;
 }
 
 .large-container-buttonparent {
@@ -115,10 +118,14 @@ a {
   width: calc(150px + 18px);
   height: calc(200px + 18px);
   position: fixed;
-  /* bottom: 10px;
-  right: 10px; */
   z-index: 100;
   isolation: isolate;
+  visibility: visible;
+
+}
+
+.smsmsmhidden{
+ visibility: hidden;
 }
 .small-video-container-box {
   position: absolute;
@@ -127,9 +134,8 @@ a {
   width: 160px;
   height: 160px;
   z-index: 100;
-  /* position: fixed;
-  bottom: 18.2px;
-  right: 19px; */
+  animation: popofbuttton 0.9s ease-out  ;
+  animation-iteration-count: 2;
   border-radius: 50%;
   isolation: isolate;
 }
@@ -364,4 +370,28 @@ video {
   box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
   transform: translateY(-0.25em);
   transition: 0.5s ease-in-out ;
+}
+
+
+.icon-container{
+  padding-right: 1rem;
+}
+
+.share{
+  padding: 3.5px;
+  padding-right: 1rem;
+}
+
+
+
+@keyframes popofbuttton {
+  0%{
+    transform: translateY(100%);
+  } 
+  70% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
 }

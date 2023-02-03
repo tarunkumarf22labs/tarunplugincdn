@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "uelements";
 import { LargeComponentprops } from "../types";
+import CustomButton from "./CustomButton";
 
 function LargeComponent({
   cssval,
@@ -148,36 +149,7 @@ function LargeComponent({
           className="lg-video-for-full"
           playsInline
         />
-
-        <div className="large-container-buttonparent">
-          {show ? (
-            buttons.map((e: any) => {
-              if (!e.value) {
-                return (
-                  <button
-                    className={"overlay-thing-button"}
-                    onClick={() => handleChange(e.next)}
-                    href={e?.value}
-                  >
-                    {e.text}
-                  </button>
-                );
-              } else {
-                return (
-                  <button className={"overlay-thing-button"}>
-                    <a href={e.value} target="_blank">
-                      {" "}
-                      {e.text}{" "}
-                    </a>
-                  </button>
-                );
-              }
-            })
-          ) : (
-            <div></div>
-          )}
-        </div>
-
+        <CustomButton show = {show}  buttons = {buttons}  handleChange ={handleChange} />
         <h1
           className="lg-credit"
           style={{
