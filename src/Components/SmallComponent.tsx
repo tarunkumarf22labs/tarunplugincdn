@@ -9,6 +9,7 @@ function SmallComponent({
   base,
   round = false,
   onlocalchange,
+  initalanimation,
 }: SmallComponentprops) {
   const videoref = useRef<HTMLVideoElement | null>(null);
   useEffect(() => {
@@ -27,10 +28,13 @@ function SmallComponent({
     setinitialsize(true);
     onlocalchange();
   }
+
+  let animation = initalanimation ? "pageloadanimation" : ""
+
   return (
     <>
       <>
-        <div className="small-video-container-box ">
+        <div className={`small-video-container-box ${animation} `}>
           <div className="close-button cls-sm">
             <svg
               onClick={cmpclose}

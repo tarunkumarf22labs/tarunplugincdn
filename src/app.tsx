@@ -1,4 +1,3 @@
-import { log } from "console";
 import { useEffect, useRef, useState, JSX } from "uelements";
 import LargeComponent from "./Components/LargeComponent";
 import SmallComponent from "./Components/SmallComponent";
@@ -13,6 +12,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
   const [local, setlocal] = useState({} as any);
   const [first, setfirst] = useLocalstorage("initialvideo", []);
   const [timingshow, settimingshow] = useState(true);
+  const [initalanimation, setinitalanimation] = useState(true)
   function getingkeys() {
     let val = JSON.parse(localStorage.getItem("initialvideo")!);
     if (val?.length) {
@@ -50,8 +50,6 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
     data();
   }, []);
 
-  //  width: 320px;
-  //  height: 540px;
 
   document.documentElement.style.setProperty(
     "--largecontainer-width",
@@ -181,6 +179,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
     SetShow(false);
     setnext(local?.startStep);
     setmuted(true);
+    setinitalanimation(false)
   }
 
   function cmpclose() {
@@ -272,12 +271,13 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
     settimingshow(false);
   }, 1000);
 
+
   return (
     <div
       className={
         !timingshow
-          ? "small-video-container-box-parent"
-          : "small-video-container-box-parent smsmsmhidden"
+          ? `small-video-container-box-parent `
+          : `small-video-container-box-parent smsmsmhidden  `
       }
       style={cssval as any}
     >
@@ -307,6 +307,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
           video={video}
           round={local?.rounded}
           onlocalchange={onlocalchange}
+          initalanimation = {initalanimation}
         />
       )}
     </div>

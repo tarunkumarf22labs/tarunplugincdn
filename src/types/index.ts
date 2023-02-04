@@ -28,6 +28,7 @@ export interface SmallComponentprops {
   base: string;
   round: boolean;
   onlocalchange : () => void;
+  initalanimation : boolean
 }
 
 

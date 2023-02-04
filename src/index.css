@@ -17,8 +17,6 @@
   --largecontainer-height : "";
  }
              
-
- 
 * {
   margin: 0;
   padding: 0;
@@ -134,11 +132,15 @@ a {
   width: 160px;
   height: 160px;
   z-index: 100;
-  animation: popofbuttton 0.9s ease-out  ;
-  animation-iteration-count: 2;
   border-radius: 50%;
   isolation: isolate;
+  
 }
+
+ .pageloadanimation{
+  animation: popofbuttton 0.9s ease-out  ;
+  animation-iteration-count: 2;
+ }
 
 video {
   height: 100%;
