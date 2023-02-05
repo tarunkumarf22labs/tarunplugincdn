@@ -77,7 +77,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
      console.log(bin , "Sahi" )
       handlestoragevals(data.record);
       setdata(data.record);
-      setlocal(data.record[bin][excatindex[0]?.count || 0]);
+      setlocal(data.record[bin!][excatindex[0]?.count || 0]);
     }
     data();
   }, []);
