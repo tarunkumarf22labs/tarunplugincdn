@@ -31,7 +31,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
 
 
 
-   function handlenextkind(data) {
+   function handlenextkind(data : any ) {
     let keys = Object.keys(data)
     let dudefindkey = keys.filter((e) => {
         console.log(e , base)
@@ -53,7 +53,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
     }
     if(!dudefindkey.length) {
         console.log(log)
-       return  log[1]
+       return  log?.[1]
     } else {
        return dudefindkey[0]
     }
