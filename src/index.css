@@ -166,10 +166,10 @@ video {
 }
 
 .cls-sm {
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
   top: -5px;
-  padding: 3px;
+  padding: 5px;
 }
 
 .widgetheader {

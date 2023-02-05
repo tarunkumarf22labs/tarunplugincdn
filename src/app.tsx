@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState, JSX } from "uelements";
 import LargeComponent from "./Components/LargeComponent";
 import SmallComponent from "./Components/SmallComponent";
@@ -28,6 +29,36 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
     }
   }
 
+
+
+   function handlenextkind(data) {
+    let keys = Object.keys(data)
+    let dudefindkey = keys.filter((e) => {
+        console.log(e , base)
+    if (e === base) {
+                return e   
+    }
+
+    } )
+
+    let log ;
+    console.log(dudefindkey.length)
+    if(!dudefindkey.length) {
+    log =keys.filter((e) => {
+             if(base.match(e)) {
+              return e
+             }
+          } )
+      
+    }
+    if(!dudefindkey.length) {
+        console.log(log)
+       return  log[1]
+    } else {
+       return dudefindkey[0]
+    }
+   }
+
   useEffect(() => {
     async function data() {
       let val = await fetch(dataURL);
@@ -40,12 +71,13 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
         } else {
           return 0;
         }
-      });
+      }); 
 
+     let bin  =   handlenextkind(data.record)
+     console.log(bin , "Sahi" )
       handlestoragevals(data.record);
       setdata(data.record);
-
-      setlocal(data.record[base][excatindex[0]?.count || 0]);
+      setlocal(data.record[bin][excatindex[0]?.count || 0]);
     }
     data();
   }, []);
@@ -104,6 +136,19 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
     "--grid-gap",
     `${local.gridgap}px`
   );
+
+
+  document.documentElement.style.setProperty(
+    "--small-closebuttonheight",
+    `${local.closebuttonheight}px`
+  );
+
+  document.documentElement.style.setProperty(
+    "--small-closebuttonwidth",
+    `${local.closebuttonwidth}px`
+  );
+
+
 
   setTimeout(() => {
     document.documentElement.style.setProperty(
