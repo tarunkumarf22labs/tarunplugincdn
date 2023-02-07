@@ -1,4 +1,4 @@
-import { log } from "console";
+
 import {
   Aicons,
   Bicons,
@@ -28,8 +28,6 @@ function CustomButton({ show, buttons, handleChange } : CustomButtomprops ) {
 
     return sahi[0];
   }
-
-   console.log("button" , buttons )
   return (
     <div className="large-container-buttonparent">
       {show ? (

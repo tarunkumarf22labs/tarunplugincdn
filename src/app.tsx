@@ -63,7 +63,6 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
   function handlenextkind(data : any ) {
     let keys = Object.keys(data)
     let dudefindkey = keys.filter((e) => {
-        console.log(e , base)
     if (e === base) {
                 return e   
     }
@@ -71,7 +70,6 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
     } )
 
     let log ;
-    console.log(dudefindkey.length)
     if(!dudefindkey.length) {
     log =keys.filter((e) => {
              if(base.match(e)) {
@@ -81,7 +79,6 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
       
     }
     if(!dudefindkey.length) {
-        console.log(log , "Sahi")
        return  log?.[1]
     } else {
        return dudefindkey[0]
@@ -103,11 +100,9 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
       }); 
 
      let bin  =   handlenextkind(data.record)
-     console.log(bin , "Sahi" )
-     console.log(data.record , data , bin)
+ 
       handlestoragevals(data.record);
       setdata(data.record);
-      console.log(bin)
       setlocal(data.record[bin!][excatindex[0]?.count || 0]);
     }
     data();
@@ -347,7 +342,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
 
     getingkeys();
   }
-  console.log(data);
+
 
   setTimeout(() => {
     settimingshow(false);
