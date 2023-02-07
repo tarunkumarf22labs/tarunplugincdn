@@ -44,16 +44,16 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
     let log ;
     console.log(dudefindkey.length)
     if(!dudefindkey.length) {
-    log =keys.filter((e) => {
+   keys.filter((e) => {
              if(base.match(e)) {
-              return e
+              log = e
              }
           } )
       
     }
     if(!dudefindkey.length) {
         console.log(log)
-       return  log?.[1]
+       return  log
     } else {
        return dudefindkey[0]
     }
@@ -75,8 +75,10 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
 
      let bin  =   handlenextkind(data.record)
      console.log(bin , "Sahi" )
+     console.log(data.record , data , bin)
       handlestoragevals(data.record);
       setdata(data.record);
+
       setlocal(data.record[bin!][excatindex[0]?.count || 0]);
     }
     data();
@@ -149,6 +151,12 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
   );
 
 
+  document.documentElement.style.setProperty(
+    "--buttonloadanimation",
+    `${local.buttonloadanimation}`
+  );
+
+
 
   setTimeout(() => {
     document.documentElement.style.setProperty(
@@ -169,7 +177,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
   const [gif, setgif] = useState<string>("");
   const [initialsize, setinitialsize] = useState<boolean>(false);
   const [next, setnext] = useState<string>(local?.startStep);
-  const [buttons, setbutton] = useState([]);
+  const [buttons, setbutton] = useState({} as any );
   const [removefromcontainer, setremovefromcontainer] = useState(false);
   const [muted, setmuted] = useState(true);
   const [timeout, settimeout] = useState<number>(0);
@@ -192,7 +200,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
       .filter((e: any) => {
         if (e.key === key) {
           settimeout(e.answerTime);
-          setbutton(e.answers);
+          setbutton(e);
           setvideo(e.stockAsset.videoUrl);
           setgif(e.stockAsset.gifUrl);
           document.documentElement.style.setProperty(
@@ -349,7 +357,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
           cmpclose={cmpclose}
           data={local}
           setinitialsize={setinitialsize}
-          video={gif}
+          video={video}
           round={local?.rounded}
           onlocalchange={onlocalchange}
           initalanimation = {initalanimation}

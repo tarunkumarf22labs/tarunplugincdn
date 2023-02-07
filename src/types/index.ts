@@ -34,7 +34,7 @@ export interface SmallComponentprops {
 
 export interface CustomButtomprops{
   show: boolean;
-  buttons: never[];
+  buttons: any;
   handleChange: (e: string) => void;
 
 }

@@ -29,10 +29,11 @@ function CustomButton({ show, buttons, handleChange } : CustomButtomprops ) {
     return sahi[0];
   }
 
+   console.log("button" , buttons )
   return (
     <div className="large-container-buttonparent">
       {show ? (
-        buttons.map((e: any, i: number) => {
+        buttons.answers.map((e: any, i: number) => {
           if (!e.value) {
             return (
               <button

@@ -15,6 +15,7 @@
   --f22-bottom-background : "";
   --largecontainer-width : "";
   --largecontainer-height : "";
+  --buttonloadanimation : "";
  }
              
 * {
@@ -119,7 +120,7 @@ a {
   z-index: 100;
   isolation: isolate;
   visibility: visible;
-
+ z-index: 2147483647;
 }
 
 .smsmsmhidden{
@@ -138,7 +139,7 @@ a {
 }
 
  .pageloadanimation{
-  animation: popofbuttton 0.9s ease-out  ;
+  animation: var(--buttonloadanimation)  0.9s ease-out  ;
   animation-iteration-count: 2;
  }
 
@@ -395,5 +396,60 @@ video {
   }
   100% {
     transform: translateY(0%);
+  }
+}
+
+
+
+/* button loading animation */
+
+@keyframes popofbuttton {
+  0%{
+    transform: translateY(100%);
+  } 
+  70% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes poprightfbuttton {
+  0%{
+    transform: translatex(100%);
+  } 
+  70% {
+    transform: translatex(-50%);
+  }
+  100% {
+    transform: translatex(0%);
+  }
+}
+
+
+@keyframes popleftfbuttton {
+  0%{
+    transform: translatex(-100%);
+  } 
+  70% {
+    transform: translatex(50%);
+  }
+  100% {
+    transform: translatex(0%);
+  }
+}
+
+
+
+@keyframes poptopbutton {
+  0%{
+    transform: translatey(-100%);
+  } 
+  70% {
+    transform: translatey(50%);
+  }
+  100% {
+    transform: translatex(0%);
   }
 }
