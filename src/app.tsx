@@ -31,7 +31,36 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
 
 
 
-   function handlenextkind(data : any ) {
+  //  function handlenextkind(data : any ) {
+  //   let keys = Object.keys(data)
+  //   let dudefindkey = keys.filter((e) => {
+  //       console.log(e , base)
+  //   if (e === base) {
+  //               return e   
+  //   }
+
+  //   } )
+
+  //   let log ;
+  //   console.log(dudefindkey.length)
+  //   if(!dudefindkey.length) {
+  //  keys.filter((e) => {
+  //            if(base.match(e)) {
+  //             log = e
+  //            }
+  //         } )
+      
+  //   }
+  //   if(!dudefindkey.length) {
+  //       console.log(log)
+  //      return  log
+  //   } else {
+  //      return dudefindkey[0]
+  //   }
+  //  }
+
+
+  function handlenextkind(data : any ) {
     let keys = Object.keys(data)
     let dudefindkey = keys.filter((e) => {
         console.log(e , base)
@@ -44,16 +73,16 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
     let log ;
     console.log(dudefindkey.length)
     if(!dudefindkey.length) {
-   keys.filter((e) => {
+    log =keys.filter((e) => {
              if(base.match(e)) {
-              log = e
+              return e
              }
           } )
       
     }
     if(!dudefindkey.length) {
-        console.log(log)
-       return  log
+        console.log(log , "Sahi")
+       return  log?.[1]
     } else {
        return dudefindkey[0]
     }
@@ -78,7 +107,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
      console.log(data.record , data , bin)
       handlestoragevals(data.record);
       setdata(data.record);
-
+      console.log(bin)
       setlocal(data.record[bin!][excatindex[0]?.count || 0]);
     }
     data();
