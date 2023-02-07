@@ -1,5 +1,5 @@
-<!--  -->
+<!--
 
 <!-- always check smallcomponentvideo -->
-video === gif;
-viedo === url;
+<!-- video === gif; -->
+<!-- viedo === url; -->

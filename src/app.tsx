@@ -74,8 +74,6 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
       }); 
 
      let bin  =   handlenextkind(data.record)
-     console.log(bin , "Sahi" )
-     console.log(data.record , data , bin)
       handlestoragevals(data.record);
       setdata(data.record);
 
@@ -158,6 +156,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
 
 
 
+  
   setTimeout(() => {
     document.documentElement.style.setProperty(
       "--color-border",
@@ -169,6 +168,8 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
       `${local.widthsize}px`
     );
   }, local.firestylechanges * 1000);
+
+
 
   if (Object.entries(data).length === 0) return <div></div>;
 
@@ -193,6 +194,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
       setfirst(sa);
     }
   }
+
 
   function keypair(key = local?.startStep) {
     local?.steps
