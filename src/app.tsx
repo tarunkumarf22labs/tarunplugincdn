@@ -41,7 +41,6 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
    function handlenextkind(data : any ) {
     let keys = Object.keys(data)
     let dudefindkey = keys.filter((e) => {
-        console.log(e , base)
     if (e === base) {
                 return e   
     }
@@ -49,7 +48,6 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
     } )
 
     let log ;
-    console.log(dudefindkey.length)
     if(!dudefindkey.length) {
    keys.filter((e) => {
              if(base.match(e)) {
@@ -59,7 +57,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
       
     }
     if(!dudefindkey.length) {
-        console.log(log)
+
        return  log
     } else {
        return dudefindkey[0]
@@ -80,7 +78,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
         }
       }); 
 
-     let bin  =   handlenextkind(data.record)
+      let bin = handlenextkind(data.record)
       handlestoragevals(data.record);
       setdata(data.record);
 
@@ -220,7 +218,11 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
       });
   }
 
+
+ 
+
   useEffect(() => {
+
     const val = setTimeout(() => {
       if (initialsize) {
         SetShow(true);
@@ -327,7 +329,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
 
     getingkeys();
   }
-  console.log(data);
+
 
   setTimeout(() => {
     settimingshow(false);

@@ -36,16 +36,26 @@ function CustomButton({ show, buttons, handleChange }: CustomButtomprops) {
 
      if(buttons?.type === "thumbnail") {
     console.log(buttons.products)
+   
+    if(!show) {
+       return
+    }
+
   return(
     
            <div className="large-container-buttonparent  thumbnail"> 
        { buttons.inputs.map((e) => {
         return (
 
+           
+             
            <div className="thumbnailcontainer" >
-                 <div className="img-contanier">
-                 <img src={e.imgurl}  className ="thumbnailimage" />
-                 </div>
+
+
+               
+               <div className="img-container">
+               <img src={e.imgurl}  className ="thumbnailimage" />
+               </div>
                      <div className="text-container">
                      <h5>{e.name}</h5>
                     <h6> price: {e.preice} </h6>
@@ -54,6 +64,8 @@ function CustomButton({ show, buttons, handleChange }: CustomButtomprops) {
                     </button>
                      </div>
               </div>
+
+              
         )
        } ) }
     </div>
