@@ -245,8 +245,8 @@ video {
   padding-top: 10px;
   padding-left: 5px;
   width:fit-content;
-  min-width: 4rem;
-  min-height:35px ;
+  min-width: 30px;
+  min-height: 45px;
   display: block;
   /* height: 100%; */
   fill: white;
@@ -258,7 +258,9 @@ video {
 }
 
 .replay svg {
-  width: 3rem;
+  width: 48px;
+  min-width: 30px; 
+  padding-top: 12px;
 }
 
 
