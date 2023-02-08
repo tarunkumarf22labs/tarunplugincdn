@@ -5,8 +5,15 @@ import SmallComponent from "./Components/SmallComponent";
 import { useLocalstorage } from "./hook/useLocalstorage";
 import useWindowDimensions from "./hook/useWindowDimensions";
 import { cssvalinterface } from "./types";
-
+import { initializeApp } from "firebase/app";
+import { getAnalytics, logEvent } from "firebase/analytics";
+import {firebaseConfig } from "./firebase/firebase"
 function App({ dataURL }: { dataURL: string }): JSX.Element {
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics();
+
+  logEvent(analytics, 'goal_completion', { name: 'lever_puzzle'});
+
   let base = window.location.pathname;
   let cssval!: cssvalinterface;
   const [data, setdata] = useState({} as any);
@@ -362,6 +369,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
           video={gif}
           round={local?.rounded}
           onlocalchange={onlocalchange}
+          analaytics = {analytics}
           initalanimation = {initalanimation}
         />
       )}

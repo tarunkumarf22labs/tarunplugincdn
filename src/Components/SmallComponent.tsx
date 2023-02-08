@@ -1,3 +1,4 @@
+import { logEvent } from "@firebase/analytics";
 import { useEffect, useRef } from "uelements";
 import { SmallComponentprops } from "../types";
 
@@ -10,6 +11,7 @@ function SmallComponent({
   round = false,
   onlocalchange,
   initalanimation,
+  analaytics
 }: SmallComponentprops) {
   const videoref = useRef<HTMLVideoElement | null>(null);
   useEffect(() => {
@@ -23,9 +25,14 @@ function SmallComponent({
     } 
   }
   animationhandler();
+  let count = 1;
+
 
   function handleClick() {
     setinitialsize(true);
+  if(count === 1 ){
+
+     count++ }
     onlocalchange();
   }
 

@@ -1,4 +1,4 @@
-import { log } from "console";
+import { useRef, useState } from "uelements";
 import {
   Aicons,
   Bicons,
@@ -7,10 +7,13 @@ import {
   Eicons,
   Ficons,
   Shareicon,
+  Nextbutton,
+  Submitbutton,
 } from "../assets/Icons";
-import {CustomButtomprops} from "../types" 
+import { CustomButtomprops } from "../types";
+import usemultistepForm from "../types/usemultistepForm";
 
-function CustomButton({ show, buttons, handleChange } : CustomButtomprops ) {
+function CustomButton({ show, buttons, handleChange }: CustomButtomprops) {
   let sp = [
     <Aicons />,
     <Bicons />,
@@ -19,7 +22,8 @@ function CustomButton({ show, buttons, handleChange } : CustomButtomprops ) {
     <Eicons />,
     <Ficons />,
   ];
-  function logicforbuttontext(v  : number ) {
+  const ref = useRef<HTMLInputElement | null>(null)
+  function logicforbuttontext(v: number) {
     let sahi = sp.filter((e, i) => {
       if (i === v) {
         return e;
@@ -29,7 +33,73 @@ function CustomButton({ show, buttons, handleChange } : CustomButtomprops ) {
     return sahi[0];
   }
 
-   console.log("button" , buttons )
+
+
+
+
+   
+  if (buttons?.type === "form") {
+    const { next, step, cmpComponentsLength, currentStepindex } =
+      usemultistepForm(buttons.inputs);
+ 
+
+      function handlesubmitok(){
+        handleChange(buttons.next)
+         console.log("Sahi")
+     }
+
+
+      function handlesubmit( e : any ) {
+        e.preventDefault();
+        ref.current!.value = ""
+     console.log()
+      if(!Boolean(cmpComponentsLength <= currentStepindex + 1)) {
+          next()
+        }
+      }
+    
+
+      const [values, setvalues] = useState({} as any)
+
+      function handelInputchange(e : any ){
+        console.log(values , e.target.name , e.target.value)
+        setvalues((prev : any ) =>  { 
+         
+          return { ...prev  , [e.target.name] : e.target.value  }
+        } )
+     }
+    return (
+      <>
+        <div className="large-container-buttonparent">
+          <form action="" onSubmit={handlesubmit} className="form-step">
+            <input
+            ref = {ref}
+              type={step!.type}
+              placeholder={step!.placeholder}
+              onInput = { (e) =>  handelInputchange(e)}
+              value = {values[step.name] }
+              name = {step.name}
+              required
+            />
+            <br />
+            {cmpComponentsLength === currentStepindex + 1 ? (
+              <button
+                className="submitbuttonforform"
+                onClick={() => handlesubmitok()}
+              >
+                <Submitbutton />
+              </button>
+            ) : (
+              <button >
+                <Nextbutton />
+              </button>
+            )}
+          </form>
+        </div>
+      </>
+    );
+  }
+
   return (
     <div className="large-container-buttonparent">
       {show ? (
