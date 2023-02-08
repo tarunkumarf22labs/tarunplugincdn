@@ -14,7 +14,7 @@ import { CustomButtomprops } from "../types";
 import usemultistepForm from "../types/usemultistepForm";
 
 function CustomButton({ show, buttons, handleChange }: CustomButtomprops) {
-   console.log(buttons , "sahi" )
+  console.log(buttons, "sahi");
   let sp = [
     <Aicons />,
     <Bicons />,
@@ -23,7 +23,7 @@ function CustomButton({ show, buttons, handleChange }: CustomButtomprops) {
     <Eicons />,
     <Ficons />,
   ];
-  const ref = useRef<HTMLInputElement | null>(null)
+  const ref = useRef<HTMLInputElement | null>(null);
   function logicforbuttontext(v: number) {
     let sahi = sp.filter((e, i) => {
       if (i === v) {
@@ -34,87 +34,73 @@ function CustomButton({ show, buttons, handleChange }: CustomButtomprops) {
     return sahi[0];
   }
 
-     if(buttons?.type === "thumbnail") {
-    console.log(buttons.products)
-   
-    if(!show) {
-       return
+  if (buttons?.type === "thumbnail") {
+    console.log(buttons.products);
+
+    if (!show) {
+      return;
     }
 
-  return(
-    
-           <div className="large-container-buttonparent  thumbnail"> 
-       { buttons.inputs.map((e) => {
-        return (
-
-           
-             
-           <div className="thumbnailcontainer" >
-
-
-               
-               <div className="img-container">
-               <img src={e.imgurl}  className ="thumbnailimage" />
-               </div>
-                     <div className="text-container">
-                     <h5>{e.name}</h5>
-                    <h6> price: {e.preice} </h6>
-                    <button>
-                      <a href={e.linkforshopping}>Shop now</a>
-                    </button>
-                     </div>
+    return (
+      <div className="large-container-buttonparent  thumbnail">
+        {buttons.inputs.map((e: any) => {
+          return (
+            <div className="thumbnailcontainer">
+              <div className="img-container">
+                <img src={e.imgurl} className="thumbnailimage" />
               </div>
-
-              
-        )
-       } ) }
-    </div>
-     
-  )
-     }
-
+              <div className="text-container">
+                <h5>{e.name}</h5>
+                <h6> price: {e.preice} </h6>
+                <button>
+                  <a href={e.linkforshopping}>Shop now</a>
+                </button>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
 
   if (buttons?.type === "form") {
     const { next, step, cmpComponentsLength, currentStepindex } =
       usemultistepForm(buttons.inputs);
- 
 
-      function handlesubmitok(){
-        handleChange(buttons.next)
-         console.log("Sahi")
-     }
+    function handlesubmitok() {
+      handleChange(buttons.next);
+      console.log("Sahi");
+    }
 
-
-      function handlesubmit( e : any ) {
-        e.preventDefault();
-        ref.current!.value = ""
-     console.log()
-      if(!Boolean(cmpComponentsLength <= currentStepindex + 1)) {
-          next()
-        }
+    function handlesubmit(e: any) {
+      e.preventDefault();
+      ref.current!.value = "";
+      console.log();
+      if (!Boolean(cmpComponentsLength <= currentStepindex + 1)) {
+        next();
       }
-    
-      console.log(buttons)
-      const [values, setvalues] = useState({} as any)
+    }
 
-      function handelInputchange(e : any ){
-        console.log(values , e.target.name , e.target.value)
-        setvalues((prev : any ) =>  { 
-         
-          return { ...prev  , [e.target.name] : e.target.value  }
-        } )
-     }
+    console.log(buttons);
+    const [values, setvalues] = useState({} as any);
+
+    function handelInputchange(e: any) {
+      console.log(values, e.target.name, e.target.value);
+      setvalues((prev: any) => {
+        return { ...prev, [e.target.name]: e.target.value };
+      });
+    }
     return (
       <>
         <div className="large-container-buttonparent">
           <form action="" onSubmit={handlesubmit} className="form-step">
             <input
-            ref = {ref}
+              ref={ref}
               type={step!.type}
               placeholder={step!.placeholder}
-              onInput = { (e) =>  handelInputchange(e)}
-              value = {values[step.name] }
-              name = {step.name}
+              onInput={(e) => handelInputchange(e)}
+              value={values[step.name]}
+              name={step.name}
               required
             />
             <br />
@@ -126,7 +112,7 @@ function CustomButton({ show, buttons, handleChange }: CustomButtomprops) {
                 <Submitbutton />
               </button>
             ) : (
-              <button >
+              <button>
                 <Nextbutton />
               </button>
             )}

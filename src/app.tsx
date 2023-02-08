@@ -371,7 +371,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
           video={gif}
           round={local?.rounded}
           onlocalchange={onlocalchange}
-          analaytics = {analytics}
+          // analaytics = {analytics}
           initalanimation = {initalanimation}
         />
       )}
