@@ -14,6 +14,7 @@ import { CustomButtomprops } from "../types";
 import usemultistepForm from "../types/usemultistepForm";
 
 function CustomButton({ show, buttons, handleChange }: CustomButtomprops) {
+   console.log(buttons , "sahi" )
   let sp = [
     <Aicons />,
     <Bicons />,
@@ -33,11 +34,34 @@ function CustomButton({ show, buttons, handleChange }: CustomButtomprops) {
     return sahi[0];
   }
 
+     if(buttons?.type === "thumbnail") {
+    console.log(buttons.products)
+  return(
+    
+           <div className="large-container-buttonparent  thumbnail"> 
+       { buttons.inputs.map((e) => {
+        return (
+
+           <div className="thumbnailcontainer" >
+                 <div className="img-contanier">
+                 <img src={e.imgurl}  className ="thumbnailimage" />
+                 </div>
+                     <div className="text-container">
+                     <h5>{e.name}</h5>
+                    <h6> price: {e.preice} </h6>
+                    <button>
+                      <a href={e.linkforshopping}>Shop now</a>
+                    </button>
+                     </div>
+              </div>
+        )
+       } ) }
+    </div>
+     
+  )
+     }
 
 
-
-
-   
   if (buttons?.type === "form") {
     const { next, step, cmpComponentsLength, currentStepindex } =
       usemultistepForm(buttons.inputs);
@@ -58,7 +82,7 @@ function CustomButton({ show, buttons, handleChange }: CustomButtomprops) {
         }
       }
     
-
+      console.log(buttons)
       const [values, setvalues] = useState({} as any)
 
       function handelInputchange(e : any ){

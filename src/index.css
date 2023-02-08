@@ -495,3 +495,39 @@ video {
 .submitbuttonforform{
   background: #3D4FE0;
 }
+
+/* thumbnail css */
+
+.thumbnailimage{
+   width: 5rem;
+}
+.thumbnailcontainer{
+  display: flex;
+  background-color: white;
+  margin-top: 10px;
+  align-items: center;
+  border-radius: 5px;
+  font-family: sans-serif;
+
+}
+
+
+
+
+.thumbnailcontainer .text-container {
+  margin-left: 2px;
+}
+
+.thumbnailcontainer .text-container h5 {
+  padding-bottom: 4px;
+}
+
+
+.thumbnailcontainer .text-container h6 {
+  padding-bottom: 4px;
+}
+.thumbnailcontainer button {
+   padding: 5px ;
+   border: none;
+
+}

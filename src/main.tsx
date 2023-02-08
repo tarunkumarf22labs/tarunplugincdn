@@ -13,5 +13,5 @@ define(
 );
 
 let el = document.createElement('f22-plugin')
-el.setAttribute('dataUrl', "https://api.jsonbin.io/v3/b/63e0b98face6f33a22d76904")
+el.setAttribute('dataUrl', "https://api.jsonbin.io/v3/b/63e34885ace6f33a22d90988")
 document.body.append(el)
