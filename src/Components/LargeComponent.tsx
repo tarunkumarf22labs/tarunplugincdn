@@ -155,7 +155,7 @@ function LargeComponent({
             {" "}
            
             <span style={{ fontSize: "14px", margin: "0px" , textDecoration : "underline" }}>
-            From ❤️ F22 Labs
+            Made with ❤️ at F22 Labs
             </span>
           </a>
         </h1>
