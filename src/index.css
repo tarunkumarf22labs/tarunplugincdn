@@ -254,13 +254,13 @@ video {
 }
  
 .replay{
-  left : 80px
+  left : 80px ;
+
 }
 
 .replay svg {
-  width: 48px;
-  min-width: 30px; 
-  padding-top: 12px;
+  width: 3rem;
+  padding-right: 19px;
 }
 
 

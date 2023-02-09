@@ -66,7 +66,6 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
     if (e === base) {
                 return e   
     }
-
     } )
 
     let log ;
@@ -88,6 +87,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
   useEffect(() => {
     async function data() {
       let val = await fetch(dataURL);
+      console.log(val)
       let data = await val.json();
       let excatindex = JSON.parse(
         localStorage.getItem("initialvideo")!
@@ -98,12 +98,12 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
           return 0;
         }
       }); 
-
-     let bin  =   handlenextkind(data.record)
+      console.log(data)
+     let bin  =   handlenextkind(data)
  
-      handlestoragevals(data.record);
-      setdata(data.record);
-      setlocal(data.record[bin!][excatindex[0]?.count || 0]);
+      handlestoragevals(data);
+      setdata(data);
+      setlocal(data[bin!][excatindex[0]?.count || 0]);
     }
     data();
   }, []);
