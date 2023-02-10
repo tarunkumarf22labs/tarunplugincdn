@@ -1,3 +1,4 @@
+import { async } from "@firebase/util";
 import { useRef, useState } from "uelements";
 import {
   Aicons,
@@ -13,7 +14,7 @@ import {
 import { CustomButtomprops } from "../types";
 import usemultistepForm from "../types/usemultistepForm";
 
-function CustomButton({ show, buttons, handleChange }: CustomButtomprops) {
+function CustomButton({ show, buttons, handleChange , handletoast  }: CustomButtomprops) {
   console.log(buttons, "sahi");
   let sp = [
     <Aicons />,
@@ -38,7 +39,7 @@ function CustomButton({ show, buttons, handleChange }: CustomButtomprops) {
     console.log(buttons.products);
 
     if (!show) {
-      return;
+      return <div></div> ;
     }
 
     return (
@@ -63,11 +64,45 @@ function CustomButton({ show, buttons, handleChange }: CustomButtomprops) {
     );
   }
 
+  // submitting 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   if (buttons?.type === "form") {
     const { next, step, cmpComponentsLength, currentStepindex } =
       usemultistepForm(buttons.inputs);
-
-    function handlesubmitok() {
+      const [values, setvalues] = useState({} as any);
+    async function handlesubmitok() {
+      handletoast()
+      console.log(values)
+      const options = {
+        method: 'POST',
+        headers: {accept: 'application/json', 'content-type': 'application/json'},
+        body: JSON.stringify({
+          profiles: [{phone_number: '+13239169023', name: 'tarun', emailId: 'abc@abc.com'}]
+        })
+      };
+      
+      fetch('https://a.klaviyo.com/api/v2/list/S6F9kP/members?api_key=pk_c7fcd8df6c06c85580f47db81b866545e6', options)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
       handleChange(buttons.next);
       console.log("Sahi");
     }
@@ -82,7 +117,7 @@ function CustomButton({ show, buttons, handleChange }: CustomButtomprops) {
     }
 
     console.log(buttons);
-    const [values, setvalues] = useState({} as any);
+
 
     function handelInputchange(e: any) {
       console.log(values, e.target.name, e.target.value);

@@ -5,14 +5,8 @@ import SmallComponent from "./Components/SmallComponent";
 import { useLocalstorage } from "./hook/useLocalstorage";
 import useWindowDimensions from "./hook/useWindowDimensions";
 import { cssvalinterface } from "./types";
-import { initializeApp } from "firebase/app";
-import { getAnalytics, logEvent } from "firebase/analytics";
-import {firebaseConfig } from "./firebase/firebase"
-function App({ dataURL }: { dataURL: string }): JSX.Element {
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics();
 
-  logEvent(analytics, 'goal_completion', { name: 'lever_puzzle'});
+function App({ dataURL }: { dataURL: string }): JSX.Element {
 
   let base = window.location.pathname;
   let cssval!: cssvalinterface;
@@ -78,11 +72,11 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
         }
       }); 
 
-      let bin = handlenextkind(data.record)
-      handlestoragevals(data.record);
-      setdata(data.record);
+      let bin = handlenextkind(data)
+      handlestoragevals(data);
+      setdata(data);
 
-      setlocal(data.record[bin!][excatindex[0]?.count || 0]);
+      setlocal(data[bin!][excatindex[0]?.count || 0]);
     }
     data();
   }, []);
@@ -371,7 +365,6 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
           video={gif}
           round={local?.rounded}
           onlocalchange={onlocalchange}
-          // analaytics = {analytics}
           initalanimation = {initalanimation}
         />
       )}

@@ -36,5 +36,5 @@ export interface CustomButtomprops{
   show: boolean;
   buttons: any;
   handleChange: (e: string) => void;
-
+  handletoast : () => void;
 }

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "uelements";
+import { useEffect, useRef, useState } from "uelements";
 import { LargeComponentprops } from "../types";
 import CustomButton from "./CustomButton";
 
@@ -16,11 +16,20 @@ function LargeComponent({
   useEffect(() => {
     videoEl.current?.removeAttribute("controls");
   }, []);
-
+ const [toast, setToast] = useState(false)
   function handlereplay() {
     videoEl.current!.currentTime = 0;
     videoEl.current!.play();
   }
+
+
+   function handletoast(){
+       setToast(true)
+        setTimeout(() => {
+          setToast(false)
+        } , 1000 )  
+   }
+
   return (
     <div style={cssval as any} className="video-container">
       <div className="loader-container">
@@ -149,7 +158,12 @@ function LargeComponent({
           className="lg-video-for-full"
           playsInline
         />
-        <CustomButton show = {show}  buttons = {buttons}  handleChange ={handleChange} />
+        
+        <div class= { toast ? "toast" : " toast hidden "   } >
+          <div className="toast-text"> your Form is submmited ✔️  </div>
+        </div>
+
+        <CustomButton show = {show}  buttons = {buttons}  handleChange ={handleChange}  handletoast = {handletoast}  />
         <h1
           className="lg-credit"
           style={{
@@ -163,9 +177,9 @@ function LargeComponent({
             target="_blank"
           >
             {" "}
-            powered by
-            <span style={{ fontSize: "14px", margin: "0px" }}>
-              &nbsp; F22 Labs
+          
+            <span style={{ fontSize: "14px", margin: "0px" , "textDecoration" : "underline" }}>
+            Made with :heart: at F22 Labs
             </span>
           </a>
         </h1>

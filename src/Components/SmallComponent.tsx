@@ -1,7 +1,7 @@
-import { logEvent } from "@firebase/analytics";
+import { addDoc, collection, doc, Timestamp } from "firebase/firestore";
 import { useEffect, useRef } from "uelements";
 import { SmallComponentprops } from "../types";
-
+import { db  } from "../firebase/firebase"
 function SmallComponent({
   cmpclose,
   video,
@@ -11,13 +11,21 @@ function SmallComponent({
   round = false,
   onlocalchange,
   initalanimation,
-  analaytics
 }: SmallComponentprops) {
+
+  let docref  = doc(db , "f22plugin" , "paperlondon.com")
+  async function gettingdids(){
+      const collectionref = collection(docref , "f22plugin" )
+     await addDoc( collectionref ,  {  visited : 1 , timestamp : Timestamp.now() } )
+ }
+
+
   const videoref = useRef<HTMLVideoElement | null>(null);
   useEffect(() => {
     videoref.current?.removeAttribute("controls");
   }, []);
-
+  const collectionref = collection(db , "Naturally yours")
+  
   let cssval = "smvideo-container";
   function animationhandler() {
     if (round) {
@@ -28,11 +36,9 @@ function SmallComponent({
   let count = 1;
 
 
-  function handleClick() {
+ async function handleClick() {
     setinitialsize(true);
-  if(count === 1 ){
-
-     count++ }
+    gettingdids()
     onlocalchange();
   }
 
