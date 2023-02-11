@@ -61,6 +61,7 @@ function LargeComponent({
       <div className="video-container-box">
         <div class="close-button" onClick={() => handleCloseforlargesize()}>
           <svg
+    
             width="30"
             height="30"
             viewBox="0 0 30 30"
@@ -77,7 +78,7 @@ function LargeComponent({
         <button className="mutedbutton" onClick={handlemuted}>
           {" "}
           {!muted ? (
-            <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%">
+            <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%"        style={{ "minHeight" : "40px"  }} >
               <use class="ytp-svg-shadow"></use>
               <path
                 class="ytp-svg-fill"
@@ -86,7 +87,7 @@ function LargeComponent({
               ></path>
             </svg>
           ) : (
-            <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%">
+            <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%" style={{ "minHeight" : "40px"  }}  >
               <use class="ytp-svg-shadow"></use>
               <use class="ytp-svg-shadow"></use>
               <defs>
@@ -128,7 +129,7 @@ function LargeComponent({
 
         <button className="mutedbutton replay" onClick={handlereplay}>
           <svg
-            style={{ width: "32px", display: "inline" }}
+            style={{ width: "32px", display: "inline" , "minHeight" : "40px"  , "paddingRight" : "4px" }}
             viewBox="0 0 14 14"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -179,7 +180,7 @@ function LargeComponent({
             {" "}
           
             <span style={{ fontSize: "14px", margin: "0px" , "textDecoration" : "underline" }}>
-            Made with :heart: at F22 Labs
+            Made with ❤️ at F22 Labs
             </span>
           </a>
         </h1>
