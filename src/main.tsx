@@ -13,5 +13,5 @@ define(
 );
 
 let el = document.createElement('f22-plugin')
-el.setAttribute('dataUrl', "https://f22videoplugin.s3.ap-northeast-1.amazonaws.com/paperlondon/paperlondon.json")
+el.setAttribute('dataUrl', "https://f22videoplugin.s3.ap-northeast-1.amazonaws.com/naturallyyours/Naturallyours.json")
 document.body.append(el)

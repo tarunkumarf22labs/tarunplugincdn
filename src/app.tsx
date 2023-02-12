@@ -41,18 +41,17 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
 
     } )
 
-    let log ;
+    let log 
     if(!dudefindkey.length) {
-   keys.filter((e) => {
+     log = keys.filter((e) => {
              if(base.match(e)) {
-              log = e
+                return e 
              }
           } )
       
     }
     if(!dudefindkey.length) {
-
-       return  log
+       return  log?.[1]
     } else {
        return dudefindkey[0]
     }
