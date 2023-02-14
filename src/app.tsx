@@ -78,7 +78,6 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
       setdata(data);
   
 
-      console.log(data)
 
       setlocal(data[bin!][excatindex[0]?.count || 0]);
     }
