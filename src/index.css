@@ -1,23 +1,23 @@
 :root {
-  --color-border: "";
-  --color-width: "";
-  --color-animation: "";
-  --width-smallbox: "";
-  --height-smallbox: "";
-  --text-color: "";
-  --bottom-css: "";
-  --row-position: "";
-  --padding-x: "";
-  --padding-y: "";
-  --grid-gap: "";
-  --f22-display: "";
-  --f22-bottom-color: "";
-  --f22-bottom-background: "";
-  --largecontainer-width: "";
-  --largecontainer-height: "";
-  --buttonloadanimation: "";
-}
-
+  --color-border:    "" ;
+  --color-width:     "" ;
+  --color-animation: "" ;
+  --width-smallbox : "";
+  --height-smallbox : "";
+  --text-color  : "";
+  --bottom-css  : "";
+  --row-position : "";
+  --padding-x : "";
+  --padding-y : "";
+  --grid-gap : "" ;
+  --f22-display : "";
+  --f22-bottom-color : "";
+  --f22-bottom-background : "";
+  --largecontainer-width : "";
+  --largecontainer-height : "";
+  --buttonloadanimation : "";
+ }
+             
 * {
   margin: 0;
   padding: 0;
@@ -27,7 +27,7 @@
 .video-container {
   width: var(--largecontainer-width);
   height: var(--largecontainer-height);
-
+  
   position: fixed;
   bottom: 10px;
   /* right: 10px; */
@@ -80,17 +80,17 @@
 .overlay-thing-button {
   display: flex;
   align-items: center;
-  padding: var(--padding-y) var(--padding-x);
+  padding: var(--padding-y)  var(--padding-x)   ;
   border-radius: 20px;
   margin-bottom: 8px;
   background-color: rgba(0, 0, 0, 0.6);
-  color: white;
+  color:  white;
   cursor: pointer;
   font-size: 12px !important ;
   width: 100%;
   text-align: left;
   isolation: isolate;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   font-weight: bold;
 }
 
@@ -111,6 +111,8 @@ a {
   font-size: inherit;
 }
 
+
+
 .small-video-container-box-parent {
   width: calc(150px + 18px);
   height: calc(200px + 18px);
@@ -118,11 +120,11 @@ a {
   z-index: 100;
   isolation: isolate;
   visibility: visible;
-  z-index: 2147483647;
+ z-index: 2147483647;
 }
 
-.smsmsmhidden {
-  visibility: hidden;
+.smsmsmhidden{
+ visibility: hidden;
 }
 .small-video-container-box {
   position: absolute;
@@ -133,12 +135,13 @@ a {
   z-index: 100;
   border-radius: 50%;
   isolation: isolate;
+  
 }
 
-.pageloadanimation {
-  animation: var(--buttonloadanimation) 0.9s ease-out;
+ .pageloadanimation{
+  animation: var(--buttonloadanimation)  0.9s ease-out  ;
   animation-iteration-count: 2;
-}
+ }
 
 video {
   height: 100%;
@@ -182,7 +185,7 @@ video {
   font-size: 15px;
   color: var(--text-color);
   font-family: sans-serif;
-  text-shadow: 1px 1px #000;
+  text-shadow:1px 1px #000;
 }
 /* naturallyyours */
 .sm-video {
@@ -202,7 +205,7 @@ video {
   border-bottom-right-radius: 10px;
 }
 
-.lg-credit a:hover {
+.lg-credit a:hover{
   color: #fff;
 }
 
@@ -237,26 +240,26 @@ video {
   background: transparent;
   border: none;
   pointer-events: none;
-  
 }
 .mutedbutton svg {
   padding-top: 10px;
   padding-left: 5px;
-  width: fit-content;
+  width:fit-content;
   width: 4rem;
   height: 2.9rem;
   /* height: 100%; */
   fill: white;
   pointer-events: fill;
 }
-
-.replay {
-  left: 80px;
+ 
+.replay{
+  left : 80px
 }
 
 .replay svg {
   width: 3rem;
 }
+
 
 /* @media only screen and (max-width: 1440px) {
  
@@ -364,25 +367,30 @@ video {
   z-index: -10;
 }
 
+
+
 .overlay-thing-button:hover {
   box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
   transform: translateY(-0.25em);
-  transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out ;
 }
 
-.icon-container {
+
+.icon-container{
   padding-right: 1rem;
 }
 
-.share {
+.share{
   padding: 3.5px;
   padding-right: 1rem;
 }
 
+
+
 @keyframes popofbuttton {
-  0% {
+  0%{
     transform: translateY(100%);
-  }
+  } 
   70% {
     transform: translateY(-50%);
   }
@@ -391,12 +399,14 @@ video {
   }
 }
 
+
+
 /* button loading animation */
 
 @keyframes popofbuttton {
-  0% {
+  0%{
     transform: translateY(100%);
-  }
+  } 
   70% {
     transform: translateY(-50%);
   }
@@ -406,9 +416,9 @@ video {
 }
 
 @keyframes poprightfbuttton {
-  0% {
+  0%{
     transform: translatex(100%);
-  }
+  } 
   70% {
     transform: translatex(-50%);
   }
@@ -417,10 +427,11 @@ video {
   }
 }
 
+
 @keyframes popleftfbuttton {
-  0% {
+  0%{
     transform: translatex(-100%);
-  }
+  } 
   70% {
     transform: translatex(50%);
   }
@@ -429,10 +440,12 @@ video {
   }
 }
 
+
+
 @keyframes poptopbutton {
-  0% {
+  0%{
     transform: translatey(-100%);
-  }
+  } 
   70% {
     transform: translatey(50%);
   }
@@ -442,7 +455,7 @@ video {
 }
 /* form */
 
-.form-step {
+.form-step{
   width: 100%;
 }
 .form-step input {
@@ -450,18 +463,19 @@ video {
   padding: 16px;
   border-radius: 24px;
   background-color: rgba(0, 0, 0, 0.6);
-  color: white;
+  color:  white;
   outline: none;
   border: none;
 }
 
-.form-step {
+.form-step{
   position: relative;
 }
 
-.form-step input::placeholder {
+.form-step input::placeholder{
   color: white;
 }
+
 
 .form-step button {
   /* content: attr(); */
@@ -478,73 +492,27 @@ video {
   cursor: pointer;
 }
 
-.submitbuttonforform {
-  background: #3d4fe0;
+.submitbuttonforform{
+  background: #3D4FE0;
 }
 
-/* thumbnail css */
 
-.thumbnailimage {
-  width: 5rem;
+.hidden{
+  display: none;
 }
-.thumbnailcontainer {
-  display: flex;
-  background-color: white;
-  margin-top: 10px;
-  align-items: center;
-  border-radius: 5px;
-  font-family: sans-serif;
-}
-
-.thumbnailcontainer .text-container {
-  margin-left: 2px;
-}
-
-.thumbnailcontainer .text-container h5 {
-  padding-bottom: 4px;
-}
-
-.thumbnailcontainer .text-container h6 {
-  padding-bottom: 4px;
-}
-.thumbnailcontainer button {
-  padding: 5px;
-  border: none;
-}
-
-/*  Toast   */
 
 .toast {
-  position: absolute;
-  top: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  
+   position: absolute;
+   top: 10px;
+   width: 100%;
+   text-align: center;
+
 }
 
-.toast-text {
-  background: white;
-  width: 90%;
-  padding: 10px;
-  border-radius: 2px;
-  font-family: sans-serif;
-  border-radius: 30px;
-  text-align: center;
-  font-weight: bolder;
-  animation: poptopbutton 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-}
-
-@keyframes poptopbutton {
-  0% {
-    transform: translatey(-150%);
-  }
-  100% {
-    transform: translatex(0%);
-  }
-}
-
-.hidden {
-  display: none;
+.toast-text{
+  margin: 2rem;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: #fff;
+   padding: 15px;
 }

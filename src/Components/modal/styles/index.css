@@ -1,0 +1,177 @@
+
+
+.modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.modal-container{
+  background-color: white;
+  position: fixed;
+   top: 10px;
+  left: 25%;
+  right: 25%;
+  z-index: 100;
+  position: absolute;
+  width: 720px;
+  height: 400px;
+  box-shadow: 0 2px  8px  rgba(0, 0, 0, 0.6);
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+
+video {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+.forms{
+position: absolute;
+bottom: 10px;
+width: 100%;
+text-align: center;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.modal-form{
+  width: 400px;
+  height: 48px;
+  position: relative;
+}
+
+.input-modal {
+      width: 100%;
+      height: 100%;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  padding-left: 10px;
+  color: white;
+  font-size: 16px;
+}
+
+
+.input-modal::placeholder { /* Most modern browsers support this now. */
+  color:    #fff;
+}
+
+.submitbtnmodal {
+   position: absolute;
+   right: 15px;
+   top: 10px;
+   width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.cross-buttonmodal{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 10px;
+  right: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 50%;
+   background: rgba(0, 0, 0, 0.4);
+   cursor: pointer;
+
+}
+
+
+.modal-container{
+  animation-name: m;
+  animation-duration: 0.5s;
+  animation: modalopen 1s cubic-bezier(0.175, 0.885, 0.32, 1.275)  ;
+}
+
+
+
+@keyframes modalopen {
+0% {
+   top: 0px;
+} 
+10%{
+  top: 50px;
+}
+
+20%{
+  top: 280px;
+}
+
+
+}
+
+/* Thumnbnail css */
+
+.thumbnail img {
+  width: inherit;
+  height: inherit;
+  object-fit: fill;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.thumbnailcontainer{
+  display: flex;
+  width: 288px;
+  height: 120px;
+  background-color: white;
+  margin-top: 8px;
+  border-radius: 5px;
+}
+.thumbnail .img-container{
+  width: 88px;
+  height: 120px;
+}
+
+.text-container h1 ,h6 {
+  font-size: 12px;
+  line-height: 18px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 100;
+  height: 54px;
+}
+
+.text-container h6 {
+ padding: 2px;
+ font-weight: bolder;
+ height: 14px;
+
+}
+
+.text-container{
+  padding: 8px;
+}
+
+.thumbnail .text-container button {
+   background-color: #3D4FE0;
+   outline: none;
+   border: none;
+   padding: 6px 12px;
+    border-radius: 2px;
+    margin-top: 10px;
+  }
+
+
+.thumbnail .text-container button a  {
+  font-size: 10px;
+  color: white;
+}
+
+

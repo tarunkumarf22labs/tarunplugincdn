@@ -160,7 +160,7 @@ function LargeComponent({
           playsInline
         />
         
-        <div class= { toast ? "toast" : " toast hidden "   } >
+        <div className= { toast ? "toast" : " toast hidden "   } >
           <div className="toast-text"> your Form is submmited ✔️  </div>
         </div>
 

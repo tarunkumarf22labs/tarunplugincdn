@@ -2,8 +2,6 @@ import { define } from 'uelements'
 import  App  from './app'
 import './index.css'
 
-
-
 define(
 	"f22-plugin",
 	(el) => <App dataURL={(el.getAttribute("dataURL") || "")}  
@@ -13,5 +11,5 @@ define(
 );
 
 let el = document.createElement('f22-plugin')
-el.setAttribute('dataUrl', "https://f22videoplugin.s3.ap-northeast-1.amazonaws.com/naturallyyours/Naturallyours.json")
+el.setAttribute('dataUrl', "https://f22videoplugin.s3.ap-northeast-1.amazonaws.com/paperlondon/paperlondon.json")
 document.body.append(el)

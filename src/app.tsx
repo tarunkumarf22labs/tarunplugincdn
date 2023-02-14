@@ -1,6 +1,7 @@
 
 import { useEffect, useRef, useState, JSX } from "uelements";
 import LargeComponent from "./Components/LargeComponent";
+import Modal from "./Components/modal/Modal";
 import SmallComponent from "./Components/SmallComponent";
 import { useLocalstorage } from "./hook/useLocalstorage";
 import useWindowDimensions from "./hook/useWindowDimensions";
@@ -71,15 +72,21 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
         }
       }); 
 
+
       let bin = handlenextkind(data)
       handlestoragevals(data);
       setdata(data);
+  
+
+      console.log(data)
 
       setlocal(data[bin!][excatindex[0]?.count || 0]);
     }
     data();
   }, []);
 
+
+  console.log(local)
 
   document.documentElement.style.setProperty(
     "--largecontainer-width",
@@ -133,7 +140,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
   document.documentElement.style.setProperty(
     "--grid-gap",
     `${local.gridgap}px`
-  );
+  );      
 
 
   document.documentElement.style.setProperty(
@@ -200,6 +207,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
       .filter((e: any) => {
         if (e.key === key) {
           settimeout(e.answerTime);
+          console.log(e)
           setbutton(e);
           setvideo(e.stockAsset.videoUrl);
           setgif(e.stockAsset.gifUrl);
@@ -212,7 +220,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
   }
 
 
- 
+ console.log(buttons , "Sahi" )
 
   useEffect(() => {
 
@@ -328,6 +336,20 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
     settimingshow(false);
   }, 1000);
 
+
+   const [modal, setmodal] = useState(local.ismodal ? true : false);
+   const [values, setvalues] = useState({} as any );
+    useEffect(() => {
+       setTimeout(() => {
+    setmodal(local.ismodal)
+     }, 1000);
+    } ,[])
+
+    console.log(local.ismodal , modal ,local)
+
+   if (modal) {
+       return <> { modal ? <Modal setmodal ={setmodal}   values = {values} setvalues = {setvalues} modalformformat = { local?.modal?.dummy} />  : <div></div> } </>
+  } 
 
   return (
     <div

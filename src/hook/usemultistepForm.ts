@@ -3,10 +3,10 @@ import { ComponentChildren } from "uelements";
 
 function usemultistepForm(steps: any[]) {
   const [currentStepindex, setCurrentStepIndex] = useState<number>(0);
-  const cmpComponentsLength = steps.length
+  const cmpComponentsLength = steps?.length
   function next() {
     setCurrentStepIndex((i) => {
-      if (i >= steps.length - 1) return i;
+      if (i >= steps?.length - 1) return i;
       return i + 1;
     });
   }
@@ -23,7 +23,7 @@ function usemultistepForm(steps: any[]) {
   }
   return {
     currentStepindex,
-    step: steps[currentStepindex],
+    step: steps?.[currentStepindex],
     next,
     back,
     goTo,

@@ -12,11 +12,16 @@ import {
   Submitbutton,
 } from "../assets/Icons";
 import { CustomButtomprops } from "../types";
-import usemultistepForm from "../types/usemultistepForm";
+import usemultistepForm from "../hook/usemultistepForm";
 
-function CustomButton({ show, buttons, handleChange , handletoast  }: CustomButtomprops) {
-  console.log(buttons, "sahi");
-  let sp = [
+function CustomButton({
+  show,
+  buttons,
+  handleChange,
+  handletoast,
+}: CustomButtomprops) {
+  console.log(buttons ,  "paapa")
+  let alphabetIcons = [
     <Aicons />,
     <Bicons />,
     <Cicons />,
@@ -26,7 +31,7 @@ function CustomButton({ show, buttons, handleChange , handletoast  }: CustomButt
   ];
   const ref = useRef<HTMLInputElement | null>(null);
   function logicforbuttontext(v: number) {
-    let sahi = sp.filter((e, i) => {
+    let sahi = alphabetIcons.filter((e, i) => {
       if (i === v) {
         return e;
       }
@@ -36,22 +41,22 @@ function CustomButton({ show, buttons, handleChange , handletoast  }: CustomButt
   }
 
   if (buttons?.type === "thumbnail") {
-    console.log(buttons.products);
+    console.log(buttons.question);
 
     if (!show) {
-      return <div></div> ;
+      return <div></div>;
     }
 
     return (
       <div className="large-container-buttonparent  thumbnail">
-        {buttons.inputs.map((e: any) => {
+        {buttons.answers.map((e: any) => {
           return (
             <div className="thumbnailcontainer">
               <div className="img-container">
                 <img src={e.imgurl} className="thumbnailimage" />
               </div>
               <div className="text-container">
-                <h5>{e.name}</h5>
+                <h1>{e.name}</h1>
                 <h6> price: {e.preice} </h6>
                 <button>
                   <a href={e.linkforshopping}>Shop now</a>
@@ -64,47 +69,14 @@ function CustomButton({ show, buttons, handleChange , handletoast  }: CustomButt
     );
   }
 
-  // submitting 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  // submitting
 
   if (buttons?.type === "form") {
     const { next, step, cmpComponentsLength, currentStepindex } =
       usemultistepForm(buttons.inputs);
-      const [values, setvalues] = useState({} as any);
+    const [values, setvalues] = useState({} as any);
     async function handlesubmitok() {
-      handletoast()
-      console.log(values)
-      const options = {
-        method: 'POST',
-        headers: {accept: 'application/json', 'content-type': 'application/json'},
-        body: JSON.stringify({
-          profiles: [{phone_number: '+13239169023', name: 'tarun', emailId: 'abc@abc.com'}]
-        })
-      };
-      
-      fetch('https://a.klaviyo.com/api/v2/list/S6F9kP/members?api_key=pk_c7fcd8df6c06c85580f47db81b866545e6', options)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
-      handleChange(buttons.next);
-      console.log("Sahi");
+      handletoast();
     }
 
     function handlesubmit(e: any) {
@@ -116,15 +88,13 @@ function CustomButton({ show, buttons, handleChange , handletoast  }: CustomButt
       }
     }
 
-    console.log(buttons);
-
-
     function handelInputchange(e: any) {
       console.log(values, e.target.name, e.target.value);
       setvalues((prev: any) => {
         return { ...prev, [e.target.name]: e.target.value };
       });
     }
+
     return (
       <>
         <div className="large-container-buttonparent">
