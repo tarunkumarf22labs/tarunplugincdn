@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import { useRef, useState } from "uelements";
 import {
   Aicons,
@@ -51,18 +50,17 @@ function CustomButton({
       <div className="large-container-buttonparent  thumbnail">
         {buttons.answers.map((e: any) => {
           return (
+            <a href={e.linkforshopping} style = {{ display : "block" }}  >
             <div className="thumbnailcontainer">
               <div className="img-container">
                 <img src={e.imgurl} className="thumbnailimage" />
               </div>
               <div className="text-container">
                 <h1>{e.name}</h1>
-                <h6> price: {e.preice} </h6>
-                <button>
-                  <a href={e.linkforshopping}>Shop now</a>
-                </button>
+                <h6> Price: {e.preice} </h6>
               </div>
             </div>
+            </a>
           );
         })}
       </div>
@@ -77,6 +75,21 @@ function CustomButton({
     const [values, setvalues] = useState({} as any);
     async function handlesubmitok() {
       handletoast();
+
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          "data":   {
+            "type": "profile",
+            "attributes": {...values}
+          }
+          
+      } )
+    };
+    fetch('https://iecb4lgq9l.execute-api.us-east-1.amazonaws.com/dev/', requestOptions)
+        .then(response => response.json())
+        .then(data => console.log(data));
     }
 
     function handlesubmit(e: any) {
@@ -91,7 +104,17 @@ function CustomButton({
     function handelInputchange(e: any) {
       console.log(values, e.target.name, e.target.value);
       setvalues((prev: any) => {
-        return { ...prev, [e.target.name]: e.target.value };
+        if (e.target.name === "phone_number") {
+           let val = e.target.value.includes("+91")
+           if (val) {
+          e.target.value = e.target.value.replace("+91" , "" )
+           }
+           console.log(val)
+          return { ...prev, [e.target.name]: `+91${e.target.value}` };
+        } else {
+          return { ...prev, [e.target.name]: e.target.value };
+        }
+     
       });
     }
 
@@ -163,3 +186,6 @@ function CustomButton({
 }
 
 export default CustomButton;
+
+
+https://f22videoplugin.s3.ap-northeast-1.amazonaws.com/naturallyyours/naturallyyours.json

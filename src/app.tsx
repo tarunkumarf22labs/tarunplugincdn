@@ -15,7 +15,9 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
   const [local, setlocal] = useState({} as any);
   const [first, setfirst] = useLocalstorage("initialvideo", []);
   const [timingshow, settimingshow] = useState(true);
-  const [initalanimation, setinitalanimation] = useState(true)
+  const [initalanimation, setinitalanimation] = useState(true);
+  
+
   function getingkeys() {
     let val = JSON.parse(localStorage.getItem("initialvideo")!);
     if (val?.length) {
@@ -39,7 +41,6 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
     if (e === base) {
                 return e   
     }
-
     } )
 
     let log 
@@ -76,9 +77,6 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
       let bin = handlenextkind(data)
       handlestoragevals(data);
       setdata(data);
-  
-
-
       setlocal(data[bin!][excatindex[0]?.count || 0]);
     }
     data();
