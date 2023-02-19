@@ -82,7 +82,6 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
   }, []);
 
 
-  console.log(local)
 
   document.documentElement.style.setProperty(
     "--largecontainer-width",
@@ -203,7 +202,6 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
       .filter((e: any) => {
         if (e.key === key) {
           settimeout(e.answerTime);
-          console.log(e)
           setbutton(e);
           setvideo(e.stockAsset.videoUrl);
           setgif(e.stockAsset.gifUrl);

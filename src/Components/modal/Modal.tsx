@@ -15,29 +15,23 @@ function Modal({
   modalformformat : any
 }) {
 
-  console.log(modalformformat)
   const { step, currentStepindex, cmpComponentsLength, next } =
     usemultistepForm(modalformformat);
   const ref = useRef<HTMLInputElement>(null);
 
-  console.log(currentStepindex, cmpComponentsLength);
 
   function handleClick(e: any) {
     e.preventDefault();
     ref.current!.value = "";
     if (currentStepindex === cmpComponentsLength - 1) {
       setmodal(false);
-      console.log(values);
       return;
     }
     next();
-    console.log(e);
   }
 
   function handelInputchange(e: any) {
-    console.log(values, e.target.name, e.target.value);
     setvalues((prev: any) => {
-      console.log(prev, values);
       return { ...prev, [e.target.name]: e.target.value };
     });
   }
@@ -45,7 +39,7 @@ function Modal({
   function handleClose() {
     setmodal(false);
   }
-  console.log(step);
+
   return (
     <>
       <div className="modal"></div>

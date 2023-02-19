@@ -19,7 +19,6 @@ function CustomButton({
   handleChange,
   handletoast,
 }: CustomButtomprops) {
-  console.log(buttons ,  "paapa")
   let alphabetIcons = [
     <Aicons />,
     <Bicons />,
@@ -40,7 +39,6 @@ function CustomButton({
   }
 
   if (buttons?.type === "thumbnail") {
-    console.log(buttons.question);
 
     if (!show) {
       return <div></div>;
@@ -95,21 +93,18 @@ function CustomButton({
     function handlesubmit(e: any) {
       e.preventDefault();
       ref.current!.value = "";
-      console.log();
       if (!Boolean(cmpComponentsLength <= currentStepindex + 1)) {
         next();
       }
     }
 
     function handelInputchange(e: any) {
-      console.log(values, e.target.name, e.target.value);
       setvalues((prev: any) => {
         if (e.target.name === "phone_number") {
            let val = e.target.value.includes("+91")
            if (val) {
           e.target.value = e.target.value.replace("+91" , "" )
            }
-           console.log(val)
           return { ...prev, [e.target.name]: `+91${e.target.value}` };
         } else {
           return { ...prev, [e.target.name]: e.target.value };
