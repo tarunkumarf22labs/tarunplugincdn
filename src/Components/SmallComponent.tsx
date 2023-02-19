@@ -34,7 +34,7 @@ function SmallComponent({
   }
   animationhandler();
   let count = 1;
-
+  
 
  async function handleClick() {
     setinitialsize(true);

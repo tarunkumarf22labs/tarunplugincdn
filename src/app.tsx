@@ -8,7 +8,6 @@ import useWindowDimensions from "./hook/useWindowDimensions";
 import { cssvalinterface } from "./types";
 
 function App({ dataURL }: { dataURL: string }): JSX.Element {
-
   let base = window.location.pathname;
   let cssval!: cssvalinterface;
   const [data, setdata] = useState({} as any);
@@ -217,7 +216,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
   }
 
 
- console.log(buttons , "Sahi" )
+
 
   useEffect(() => {
 
@@ -342,7 +341,6 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
      }, 1000);
     } ,[])
 
-    console.log(local.ismodal , modal ,local)
 
    if (modal) {
        return <> { modal ? <Modal setmodal ={setmodal}   values = {values} setvalues = {setvalues} modalformformat = { local?.modal?.dummy} />  : <div></div> } </>

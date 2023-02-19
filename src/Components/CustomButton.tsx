@@ -30,13 +30,13 @@ function CustomButton({
   ];
   const ref = useRef<HTMLInputElement | null>(null);
   function logicforbuttontext(v: number) {
-    let sahi = alphabetIcons.filter((e, i) => {
+    let Icons = alphabetIcons.filter((e, i) => {
       if (i === v) {
         return e;
       }
     });
 
-    return sahi[0];
+    return Icons[0];
   }
 
   if (buttons?.type === "thumbnail") {
@@ -186,6 +186,3 @@ function CustomButton({
 }
 
 export default CustomButton;
-
-
-https://f22videoplugin.s3.ap-northeast-1.amazonaws.com/naturallyyours/naturallyyours.json

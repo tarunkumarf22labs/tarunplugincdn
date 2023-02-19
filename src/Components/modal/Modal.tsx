@@ -23,7 +23,6 @@ function Modal({
   console.log(currentStepindex, cmpComponentsLength);
 
   function handleClick(e: any) {
-    console.log("sahi");
     e.preventDefault();
     ref.current!.value = "";
     if (currentStepindex === cmpComponentsLength - 1) {
