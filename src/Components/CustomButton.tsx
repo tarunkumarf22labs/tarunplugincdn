@@ -99,12 +99,13 @@ function CustomButton({
     }
 
     function handelInputchange(e: any) {
+      console.log(e.target.name)
       setvalues((prev: any) => {
         if (e.target.name === "phone_number") {
-           let val = e.target.value.includes("+91")
-           if (val) {
-          e.target.value = e.target.value.replace("+91" , "" )
-           }
+          let val = e.target.value.includes("+91")
+          if (val) {
+         e.target.value = e.target.value.replace("+91" , "" )
+          }
           return { ...prev, [e.target.name]: `+91${e.target.value}` };
         } else {
           return { ...prev, [e.target.name]: e.target.value };
@@ -118,13 +119,14 @@ function CustomButton({
         <div className="large-container-buttonparent">
           <form action="" onSubmit={handlesubmit} className="form-step">
             <input
-              ref={ref}
-              type={step!.type}
-              placeholder={step!.placeholder}
-              onInput={(e) => handelInputchange(e)}
-              value={values[step.name]}
-              name={step.name}
-              required
+                type={step?.type}
+                value={values[step?.name]}
+                onInput={(e) => handelInputchange(e)}
+                placeholder={step?.placeholder}
+                className="input-modal"
+                name={step?.name}
+                ref={ref}
+                required
             />
             <br />
             {cmpComponentsLength === currentStepindex + 1 ? (

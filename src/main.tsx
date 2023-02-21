@@ -11,5 +11,6 @@ define(
 );
 
 let el = document.createElement('f22-plugin')
-el.setAttribute('dataUrl', "https://f22videoplugin.s3.ap-northeast-1.amazonaws.com/paperlondon/paperlondon.json")
+el.setAttribute('dataUrl', "https://api.jsonbin.io/v3/b/63f46ecaace6f33a22e27e65")
 document.body.append(el)
+

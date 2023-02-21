@@ -73,10 +73,11 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
       }); 
 
 
-      let bin = handlenextkind(data)
-      handlestoragevals(data);
-      setdata(data);
-      setlocal(data[bin!][excatindex[0]?.count || 0]);
+      let bin = handlenextkind(data.record)
+      handlestoragevals(data.record);
+      setdata(data.record);
+      console.log(data)
+      setlocal(data.record[bin!][excatindex[0]?.count || 0]);
     }
     data();
   }, []);
@@ -376,7 +377,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
           cmpclose={cmpclose}
           data={local}
           setinitialsize={setinitialsize}
-          video={gif}
+          video={video}
           round={local?.rounded}
           onlocalchange={onlocalchange}
           initalanimation = {initalanimation}

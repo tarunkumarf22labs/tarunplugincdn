@@ -19,11 +19,39 @@ function Modal({
     usemultistepForm(modalformformat);
   const ref = useRef<HTMLInputElement>(null);
 
+ 
+  async function handlesubmitok() {
+  console.log(step)
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        "data":   {
+          "type": "profile",
+          "attributes": {...values}
+        }
+        
+    } )
+  };
+  fetch('https://iecb4lgq9l.execute-api.us-east-1.amazonaws.com/dev/', requestOptions)
+      .then(response => response.json())
+      .then(data => console.log(data));
+  }
+
+  function handlesubmit(e: any) {
+    e.preventDefault();
+    ref.current!.value = "";
+    if (!Boolean(cmpComponentsLength <= currentStepindex + 1)) {
+      next();
+    }
+  } 
+  
 
   function handleClick(e: any) {
     e.preventDefault();
     ref.current!.value = "";
     if (currentStepindex === cmpComponentsLength - 1) {
+      handlesubmitok()
       setmodal(false);
       return;
     }
@@ -31,10 +59,22 @@ function Modal({
   }
 
   function handelInputchange(e: any) {
+    console.log(e.target.name)
     setvalues((prev: any) => {
-      return { ...prev, [e.target.name]: e.target.value };
+      if (e.target.name === "phone_number") {
+        let val = e.target.value.includes("+91")
+        if (val) {
+       e.target.value = e.target.value.replace("+91" , "" )
+        }
+        return { ...prev, [e.target.name]: `+91${e.target.value}` };
+      } else {
+        return { ...prev, [e.target.name]: e.target.value };
+      }
+   
     });
   }
+  console.log(values)
+  
 
   function handleClose() {
     setmodal(false);
