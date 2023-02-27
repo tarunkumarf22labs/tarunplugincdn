@@ -519,31 +519,34 @@ video {
 }
 
 
-.arrow-container img {
+.f22arrow-container img {
    width: 13rem;
 }
 
 /* box container  */
 
-.box-container{
-  min-height: 100vh;
+.f22box-container{
   position: relative;
   z-index: 0;
   /* filter: blur(100px); */
 }
 
-.arrow-container{
+.f22arrow-container{
   min-height: inherit;
   display: flex;
   align-items: center ;
   justify-content: center;
-   
+  position: fixed;
+  top: 0;
+  width: 100%;
   filter: blur(-100px) !important ;
+  height: 100%;
   
 }
-#background {
+#f22background {
 
-  position: absolute;
+  position: fixed;
+  top: 0;
   width: 100%;
   height: 100%;
   background: transparent;

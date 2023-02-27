@@ -35,6 +35,7 @@ function SmallComponent({
 
 
   async function handleClick() {
+    console.log('chal')
     setinitialsize(true);
     gettingdids();
     onlocalchange();

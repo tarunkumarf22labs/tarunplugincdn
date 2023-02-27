@@ -71,7 +71,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
       let bin = handlenextkind(data.record);
       handlestoragevals(data.record);
       setdata(data.record);
-      console.log(data);
+      console.log(data ,data.record[bin!] , bin , excatindex );
       setlocal(data.record[bin!][excatindex[0]?.count || 0]);
     }
     data();
@@ -183,7 +183,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
   const videoEl = useRef<HTMLVideoElement | null>(null);
   const { height , width } = useWindowDimensions();
   const [overalyimg, setoveralyimg] = useState<string>(local?.overalyimglarge)
-
+  const [hidden] = useState(local.hidden)
   function handlestoragevals(data: any) {
     let sa = Object.keys(data).map((e) => {
       return { base: e, count: 0 };
@@ -350,6 +350,10 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
   function handleoverlay() {
     setoverlay(false);
   }
+  console.log(hidden)
+  if (hidden) {
+    return <div></div>
+ }
 
   if (modal) {
     return (
@@ -373,18 +377,18 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
   // } else {
   //     setoveralyimg(local?.overalyimglarge)
   // }
-  console.log(cssval)
+
   return (
-    <div className= { overlay ? 'container' : 'smsmsmhidden'  }   onClick={handleoverlay}  >
+    <div className= { overlay ? 'f22box-container' : 'smsmsmhidden'  }   onClick={handleoverlay}  >
     
-     {overlay &&   <div id="background"></div> }
+     {overlay &&   <div id="f22background"></div> }
     <div
-      className={local.overlay && overlay ? "box-container" : "smsmsmhidden"}
+      className={local.overlay && overlay ? "f22box-container" : "smsmsmhidden"}
       onClick={handleoverlay}
     >
       {!timingshow ? (
         <>  
-        <div className="arrow-container">
+        <div className="f22arrow-container">
         <img src={overalyimg || arrowpng} />
         </div>
 
