@@ -16,6 +16,7 @@
   --largecontainer-width : "";
   --largecontainer-height : "";
   --buttonloadanimation : "";
+  --opacityforoverlay : ""
  }
              
 * {
@@ -120,7 +121,7 @@ a {
   z-index: 100;
   isolation: isolate;
   visibility: visible;
- z-index: 2147483647;
+  z-index: 2147483647;
 }
 
 .smsmsmhidden{
@@ -515,4 +516,50 @@ video {
   border-radius: 20px;
   background-color: #fff;
    padding: 15px;
+}
+
+
+.arrow-container img {
+   width: 13rem;
+}
+
+/* box container  */
+
+.box-container{
+  min-height: 100vh;
+  position: relative;
+  z-index: 0;
+  /* filter: blur(100px); */
+}
+
+.arrow-container{
+  min-height: inherit;
+  display: flex;
+  align-items: center ;
+  justify-content: center;
+   
+  filter: blur(-100px) !important ;
+  
+}
+#background {
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  backdrop-filter: blur(var(--opacityforoverlay));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  z-index: 2147483645;
 }

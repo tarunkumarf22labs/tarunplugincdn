@@ -5,7 +5,7 @@ export interface cssvalinterface {
   right?: string;
   left?: string;
   top?: string;
-  transform: string;
+  transform?: string;
 }
 
 export interface LargeComponentprops {
@@ -29,6 +29,7 @@ export interface SmallComponentprops {
   round: boolean;
   onlocalchange : () => void;
   initalanimation : boolean
+  handleoverlay : () => void
 }
 
 

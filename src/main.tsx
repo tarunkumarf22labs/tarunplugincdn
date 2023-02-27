@@ -10,7 +10,11 @@ define(
 	() => console.log("F22 Plugin cleanup")
 );
 
-let el = document.createElement('f22-plugin')
-el.setAttribute('dataUrl', "https://api.jsonbin.io/v3/b/63f46ecaace6f33a22e27e65")
-document.body.append(el)
+let widget1 = document.createElement('f22-plugin')
+widget1.setAttribute('dataUrl', "https://api.jsonbin.io/v3/b/63f46ecaace6f33a22e27e65")
 
+let widget2 = document.createElement('f22-plugin')
+widget2.setAttribute('dataUrl', "https://api.jsonbin.io/v3/b/63eba33cc0e7653a05776546")
+
+document.body.append(widget1)
+document.body.append(widget2)
