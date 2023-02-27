@@ -14,7 +14,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
   const [first, setfirst] = useLocalstorage("initialvideo", []);
   const [timingshow, settimingshow] = useState(true);
   const [initalanimation, setinitalanimation] = useState(true);
-  const [overlay, setoverlay] = useState(timingshow);
+  const [overlay, setoverlay] = useState(local.overlay);
 
   function getingkeys() {
     let val = JSON.parse(localStorage.getItem("initialvideo")!);
@@ -377,11 +377,11 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
   // } else {
   //     setoveralyimg(local?.overalyimglarge)
   // }
-
+ console.log(overlay)
   return (
     <div className= { overlay ? 'f22box-container' : 'smsmsmhidden'  }   onClick={handleoverlay}  >
     
-     {overlay &&   <div id="f22background"></div> }
+     {overlay ?  <div id="f22background"></div> : "" }
     <div
       className={local.overlay && overlay ? "f22box-container" : "smsmsmhidden"}
       onClick={handleoverlay}
