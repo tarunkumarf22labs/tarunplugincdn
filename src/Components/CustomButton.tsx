@@ -19,6 +19,7 @@ function CustomButton({
   handleChange,
   handletoast,
 }: CustomButtomprops) {
+  console.log(buttons)
   let alphabetIcons = [
     <Aicons />,
     <Bicons />,
@@ -73,6 +74,8 @@ function CustomButton({
     const [values, setvalues] = useState({} as any);
     async function handlesubmitok() {
       handletoast();
+
+      
 
       const requestOptions = {
         method: 'POST',

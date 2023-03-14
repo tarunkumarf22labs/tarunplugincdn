@@ -35,13 +35,13 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
 
 
    function handlenextkind(data : any ) {
-    let keys = Object.keys(data)
+    let keys = Object.keys(data);
     let dudefindkey = keys.filter((e) => {
     if (e === base) {
                 return e   
     }
     } )
-
+console.log(dudefindkey)
     let log 
     if(!dudefindkey.length) {
      log = keys.filter((e) => {
