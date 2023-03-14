@@ -37,7 +37,9 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
    function handlenextkind(data : any ) {
     let keys = Object.keys(data);
     let dudefindkey = keys.filter((e) => {
-    if (e === base) {
+      console.log(e === base , e)
+      if (e === base) {
+       
                 return e   
     }
     } )
@@ -51,11 +53,12 @@ console.log(dudefindkey)
           } )
       
     }
-    if(!dudefindkey.length) {
-       return  log?.[1]
-    } else {
-       return dudefindkey[0]
-    }
+    // if(!dudefindkey.length) {
+    //    return  log?.[1]
+    // } else {
+    //    return dudefindkey[0]
+    // }
+    return dudefindkey[0]
    }
 
   useEffect(() => {
@@ -83,6 +86,7 @@ console.log(dudefindkey)
 
 
 
+  console.log(data)
   document.documentElement.style.setProperty(
     "--largecontainer-width",
     `${local.largecontainerwidth}px`
