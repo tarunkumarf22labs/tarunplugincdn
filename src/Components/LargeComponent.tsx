@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "uelements";
+import { Playbutton } from "../assets/Icons";
 import { LargeComponentprops } from "../types";
 import CustomButton from "./CustomButton";
 
@@ -17,11 +18,21 @@ function LargeComponent({
     videoEl.current?.removeAttribute("controls");
   }, []);
  const [toast, setToast] = useState(false)
+  const [pause, setPause] = useState(false)
   function handlereplay() {
     videoEl.current!.currentTime = 0;
     videoEl.current!.play();
   }
 
+  function handlepause(){
+    setPause((prev => !prev))
+    
+  if (videoEl.current!.paused) {
+      videoEl.current!.play()
+  } else {
+    videoEl.current!.pause()
+  }
+  }
 
    function handletoast(){
        setToast(true)
@@ -159,7 +170,9 @@ function LargeComponent({
           className="lg-video-for-full"
           playsInline
         />
-        
+        <div style={{ position : 'absolute' , top : 0 , display : 'flex' , justifyContent : 'center' , alignItems : 'center' , width : '100%' , height : '100%'   }}  onClick={() =>  handlepause()}  >
+          {  pause ?   <button style={{ position : 'absolute' , top : 0 , display : 'flex' , justifyContent : 'center' , alignItems : 'center' , width : '100%' , height : '100%' ,     background: 'transparent'  ,  border: 'none' ,  }}    > <Playbutton/>  </button> : <div/> }
+        </div>
         <div className= { toast ? "toast" : " toast hidden "   } >
           <div className="toast-text"> your Form is submmited ✔️  </div>
         </div>
