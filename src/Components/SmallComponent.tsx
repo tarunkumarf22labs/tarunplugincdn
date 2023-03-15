@@ -38,7 +38,7 @@ function SmallComponent({
 
  async function handleClick() {
     setinitialsize(true);
-    gettingdids()
+    // gettingdids()
     onlocalchange();
   }
 
