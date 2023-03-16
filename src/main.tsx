@@ -11,5 +11,5 @@ define(
 );
 
 let el = document.createElement('f22-plugin')
-el.setAttribute('dataUrl', "https://api.jsonbin.io/v3/b/6412b06ec0e7653a0588b4ab")
+el.setAttribute('dataUrl', "https://f22videoplugin.s3.ap-northeast-1.amazonaws.com/Oceanus/ocenus.json")
 document.body.append(el)
