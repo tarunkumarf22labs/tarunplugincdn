@@ -186,6 +186,7 @@ video {
   color: var(--text-color);
   font-family: sans-serif;
   text-shadow:1px 1px #000;
+  cursor: pointer;
 }
 /* naturallyyours */
 .sm-video {
@@ -515,4 +516,23 @@ video {
   border-radius: 20px;
   background-color: #fff;
    padding: 15px;
+}
+
+.pausestyles{
+
+    position:  absolute;
+    top: 0;
+    display: flex;
+    justify-content:  center;
+    align-items:  center;
+    width: 100%;
+    height: 100%;
+}
+
+.f22pluginpausevideos{
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  transition: all 250ms ease 0s;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }

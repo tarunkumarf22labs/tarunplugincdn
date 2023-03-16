@@ -15,7 +15,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
   const [first, setfirst] = useLocalstorage("initialvideo", []);
   const [timingshow, settimingshow] = useState(true);
   const [initalanimation, setinitalanimation] = useState(true);
-  
+   const [showcross, setShowcross] = useState(false)
 
   function getingkeys() {
     let val = JSON.parse(localStorage.getItem("initialvideo")!);
@@ -43,7 +43,6 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
                 return e   
     }
     } )
-console.log(dudefindkey)
     let log 
     if(!dudefindkey.length) {
      log = keys.filter((e) => {
@@ -84,9 +83,6 @@ console.log(dudefindkey)
     data();
   }, []);
 
-
-
-  console.log(data)
   document.documentElement.style.setProperty(
     "--largecontainer-width",
     `${local.largecontainerwidth}px`
@@ -187,8 +183,7 @@ console.log(dudefindkey)
   const [muted, setmuted] = useState(true);
   const [timeout, settimeout] = useState<number>(0);
   const videoEl = useRef<HTMLVideoElement | null>(null);
-  const { height, width } = useWindowDimensions();
-
+  const {  width } = useWindowDimensions();
   function handlestoragevals(data: any) {
     let sa = Object.keys(data).map((e) => {
       return { base: e, count: 0 };
@@ -199,12 +194,13 @@ console.log(dudefindkey)
     }
   }
 
-
+  const number = useRef<number>(0)
   function keypair(key = local?.startStep) {
     local?.steps
       .filter((e: any) => e)
       .filter((e: any) => {
         if (e.key === key) {
+          number.current = e.answerTime
           settimeout(e.answerTime);
           setbutton(e);
           setvideo(e.stockAsset.videoUrl);
@@ -217,18 +213,20 @@ console.log(dudefindkey)
       });
   }
 
-
-
-
   useEffect(() => {
 
-    const val = setTimeout(() => {
-      if (initialsize) {
-        SetShow(true);
-      }
-    }, timeout * 1000);
-    return () => clearInterval(val);
-  }, [next, initialsize, timeout]);
+     setInterval(() => {
+      if (videoEl.current!?.currentTime > number.current && initialsize  ) {
+      SetShow(true);
+
+        return
+     }
+    } , 1000 )
+    //  return clearInterval(val)
+  } , [next, initialsize, timeout] )
+
+
+
 
   keypair(next);
 
@@ -236,7 +234,8 @@ console.log(dudefindkey)
     setnext(val);
     SetShow(false);
   }
-
+  console.log(videoEl.current?.currentTime);
+ 
   function handleCloseforlargesize() {
     setinitialsize(false);
     SetShow(false);
@@ -376,6 +375,8 @@ console.log(dudefindkey)
         />
       ) : (
         <SmallComponent
+          showcross = {showcross}
+          setShowcross ={setShowcross}
           base={base}
           cmpclose={cmpclose}
           data={local}

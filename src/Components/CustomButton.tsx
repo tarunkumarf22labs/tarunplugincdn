@@ -18,6 +18,7 @@ function CustomButton({
   buttons,
   handleChange,
   handletoast,
+  setPause
 }: CustomButtomprops) {
   console.log(buttons)
   let alphabetIcons = [
@@ -156,7 +157,10 @@ function CustomButton({
             return (
               <button
                 className={"overlay-thing-button"}
-                onClick={() => handleChange(e.next)}
+                onClick={() => {handleChange(e.next);
+                
+                  setPause(false)
+                }}
                 href={e?.value}
               >
                 <div className="icon-container">{logicforbuttontext(i)}</div>

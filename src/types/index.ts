@@ -1,4 +1,4 @@
-import { MutableRef } from "preact/hooks";
+import { MutableRef, StateUpdater } from "preact/hooks";
 
 export interface cssvalinterface {
   bottom?: string;
@@ -29,6 +29,8 @@ export interface SmallComponentprops {
   round: boolean;
   onlocalchange : () => void;
   initalanimation : boolean
+  showcross : boolean
+  setShowcross : StateUpdater<boolean>
 }
 
 
@@ -37,4 +39,5 @@ export interface CustomButtomprops{
   buttons: any;
   handleChange: (e: string) => void;
   handletoast : () => void;
+  setPause ?: any
 }

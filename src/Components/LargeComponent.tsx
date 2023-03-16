@@ -170,14 +170,14 @@ function LargeComponent({
           className="lg-video-for-full"
           playsInline
         />
-        <div style={{ position : 'absolute' , top : 0 , display : 'flex' , justifyContent : 'center' , alignItems : 'center' , width : '100%' , height : '100%'   }}  onClick={() =>  handlepause()}  >
-          {  pause ?   <button style={{ position : 'absolute' , top : 0 , display : 'flex' , justifyContent : 'center' , alignItems : 'center' , width : '100%' , height : '100%' ,     background: 'transparent'  ,  border: 'none' ,  }}    > <Playbutton/>  </button> : <div/> }
-        </div>
+         { true ? <div className='pausestyles'  onClick={() =>  handlepause()}  >
+          {  pause ?   <button className="pausestyles f22pluginpausevideos "   > <Playbutton/>  </button> : <div/> }
+        </div> : "" }
         <div className= { toast ? "toast" : " toast hidden "   } >
           <div className="toast-text"> your Form is submmited ✔️  </div>
         </div>
 
-        <CustomButton show = {show}  buttons = {buttons}  handleChange ={handleChange}  handletoast = {handletoast}  />
+        <CustomButton show = {show}  buttons = {buttons}  handleChange ={handleChange}  handletoast = {handletoast}  setPause={setPause} />
         <h1
           className="lg-credit"
           style={{
