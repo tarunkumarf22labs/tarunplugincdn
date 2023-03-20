@@ -22,9 +22,8 @@ function LargeComponent({
   const [currentTime, setCurrentTime] = useState(0);
   function handlereplay() {
     videoEl.current!.currentTime = 0;
-    setPause(false)
+    setPause(false);
     videoEl.current!.play();
- 
   }
 
   function handlepause() {
@@ -43,7 +42,7 @@ function LargeComponent({
       setToast(false);
     }, 1000);
   }
-
+ 
   const handleLoadedMetadata = () => {
     setCurrentTime(videoEl.current!.currentTime);
   };
@@ -55,8 +54,7 @@ function LargeComponent({
 
       setCurrentTime(vals);
     }, 100);
-  }, [currentTime]);
-
+  }, []);
 
   return (
     <div style={cssval as any} className="video-container">
@@ -233,7 +231,7 @@ function LargeComponent({
           handleChange={handleChange}
           handletoast={handletoast}
           setPause={setPause}
-          setCurrentTime = {setCurrentTime}
+          setCurrentTime={setCurrentTime}
         />
         <h1
           className="lg-credit"
