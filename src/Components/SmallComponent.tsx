@@ -37,7 +37,7 @@ function SmallComponent({
   let count = 1;
 
   async function handleClick() {
-    console.log("sahi");
+  
 
     setShowcross(() => true);
     setinitialsize(true);
@@ -47,7 +47,6 @@ function SmallComponent({
   }
 
   let animation = initalanimation ? "pageloadanimation" : "";
-  console.log(showcross);
   return (
     <>
       <>

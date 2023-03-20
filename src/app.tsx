@@ -37,7 +37,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
    function handlenextkind(data : any ) {
     let keys = Object.keys(data);
     let dudefindkey = keys.filter((e) => {
-      console.log(e === base , e)
+
       if (e === base) {
        
                 return e   
@@ -154,6 +154,16 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
     `${local.buttonloadanimation}`
   );
 
+  document.documentElement.style.setProperty(
+    "--progressbarcolor",
+    `${local.progressbarcolor}`   
+ )
+
+
+ document.documentElement.style.setProperty(
+  "--progressbarheight",
+  `${local.progressbarheight}px`
+)
 
 
   
@@ -168,7 +178,7 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
       `${local.widthsize}px`
     );
   }, local.firestylechanges * 1000);
-
+ 
 
 
   if (Object.entries(data).length === 0) return <div></div>;
@@ -234,7 +244,6 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
     setnext(val);
     SetShow(false);
   }
-  console.log(videoEl.current?.currentTime);
  
   function handleCloseforlargesize() {
     setinitialsize(false);

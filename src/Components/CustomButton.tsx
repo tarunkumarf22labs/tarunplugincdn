@@ -18,9 +18,10 @@ function CustomButton({
   buttons,
   handleChange,
   handletoast,
-  setPause
+  setPause,
+  setCurrentTime
 }: CustomButtomprops) {
-  console.log(buttons)
+
   let alphabetIcons = [
     <Aicons />,
     <Bicons />,
@@ -158,7 +159,7 @@ function CustomButton({
               <button
                 className={"overlay-thing-button"}
                 onClick={() => {handleChange(e.next);
-                
+                  setCurrentTime(0)
                   setPause(false)
                 }}
                 href={e?.value}
@@ -169,14 +170,16 @@ function CustomButton({
             );
           } else {
             return (
-              <button className={"overlay-thing-button"}>
+              <a className={"overlay-thing-button"}   target="_blank"  href={e.value} >
                 <div className="icon-container  share">
                   <Shareicon />
                 </div>
-                <a href={e.value} target="_blank">
-                  {e.text}
-                </a>
-              </button>
+                {/* <a href={e.value}   style={{ width : '100%' }} > */}
+                   <div>
+                   {e.text}
+                   </div>
+                {/* </a> */}
+              </a>
             );
           }
         })

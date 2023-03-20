@@ -17,29 +17,46 @@ function LargeComponent({
   useEffect(() => {
     videoEl.current?.removeAttribute("controls");
   }, []);
- const [toast, setToast] = useState(false)
-  const [pause, setPause] = useState(false)
+  const [toast, setToast] = useState(false);
+  const [pause, setPause] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
   function handlereplay() {
     videoEl.current!.currentTime = 0;
+    setPause(false)
     videoEl.current!.play();
+ 
   }
 
-  function handlepause(){
-    setPause((prev => !prev))
-    
-  if (videoEl.current!.paused) {
-      videoEl.current!.play()
-  } else {
-    videoEl.current!.pause()
-  }
+  function handlepause() {
+    setPause((prev) => !prev);
+
+    if (videoEl.current!.paused) {
+      videoEl.current!.play();
+    } else {
+      videoEl.current!.pause();
+    }
   }
 
-   function handletoast(){
-       setToast(true)
-        setTimeout(() => {
-          setToast(false)
-        } , 1000 )  
-   }
+  function handletoast() {
+    setToast(true);
+    setTimeout(() => {
+      setToast(false);
+    }, 1000);
+  }
+
+  const handleLoadedMetadata = () => {
+    setCurrentTime(videoEl.current!.currentTime);
+  };
+
+  useEffect(() => {
+    setInterval(() => {
+      let vals =
+        (videoEl.current!?.currentTime / videoEl.current!?.duration) * 96;
+
+      setCurrentTime(vals);
+    }, 100);
+  }, [currentTime]);
+
 
   return (
     <div style={cssval as any} className="video-container">
@@ -72,7 +89,6 @@ function LargeComponent({
       <div className="video-container-box">
         <div class="close-button" onClick={() => handleCloseforlargesize()}>
           <svg
-    
             width="30"
             height="30"
             viewBox="0 0 30 30"
@@ -86,10 +102,21 @@ function LargeComponent({
             />
           </svg>
         </div>
+        <div className="playbar">
+          <div className="playbarinline" style={{ width: `${currentTime}%` }}>
+            {" "}
+          </div>
+        </div>
         <button className="mutedbutton" onClick={handlemuted}>
           {" "}
           {!muted ? (
-            <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%"        style={{ "minHeight" : "40px"  }} >
+            <svg
+              height="100%"
+              version="1.1"
+              viewBox="0 0 36 36"
+              width="100%"
+              style={{ minHeight: "40px" }}
+            >
               <use class="ytp-svg-shadow"></use>
               <path
                 class="ytp-svg-fill"
@@ -98,7 +125,13 @@ function LargeComponent({
               ></path>
             </svg>
           ) : (
-            <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%" style={{ "minHeight" : "40px"  }}  >
+            <svg
+              height="100%"
+              version="1.1"
+              viewBox="0 0 36 36"
+              width="100%"
+              style={{ minHeight: "40px" }}
+            >
               <use class="ytp-svg-shadow"></use>
               <use class="ytp-svg-shadow"></use>
               <defs>
@@ -140,7 +173,12 @@ function LargeComponent({
 
         <button className="mutedbutton replay" onClick={handlereplay}>
           <svg
-            style={{ width: "32px", display: "inline" , "minHeight" : "40px"  , "paddingRight" : "4px" }}
+            style={{
+              width: "32px",
+              display: "inline",
+              minHeight: "40px",
+              paddingRight: "4px",
+            }}
             viewBox="0 0 14 14"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -168,16 +206,35 @@ function LargeComponent({
           autoPlay
           ref={videoEl}
           className="lg-video-for-full"
+          onLoadedMetadata={handleLoadedMetadata}
           playsInline
         />
-         { true ? <div className='pausestyles'  onClick={() =>  handlepause()}  >
-          {  pause ?   <button className="pausestyles f22pluginpausevideos "   > <Playbutton/>  </button> : <div/> }
-        </div> : "" }
-        <div className= { toast ? "toast" : " toast hidden "   } >
-          <div className="toast-text"> your Form is submmited ✔️  </div>
+        {true ? (
+          <div className="pausestyles" onClick={() => handlepause()}>
+            {pause ? (
+              <button className="pausestyles f22pluginpausevideos ">
+                {" "}
+                <Playbutton />{" "}
+              </button>
+            ) : (
+              <div />
+            )}
+          </div>
+        ) : (
+          ""
+        )}
+        <div className={toast ? "toast" : " toast hidden "}>
+          <div className="toast-text"> your Form is submmited ✔️ </div>
         </div>
 
-        <CustomButton show = {show}  buttons = {buttons}  handleChange ={handleChange}  handletoast = {handletoast}  setPause={setPause} />
+        <CustomButton
+          show={show}
+          buttons={buttons}
+          handleChange={handleChange}
+          handletoast={handletoast}
+          setPause={setPause}
+          setCurrentTime = {setCurrentTime}
+        />
         <h1
           className="lg-credit"
           style={{
@@ -191,9 +248,14 @@ function LargeComponent({
             target="_blank"
           >
             {" "}
-          
-            <span style={{ fontSize: "14px", margin: "0px" , "textDecoration" : "underline" }}>
-            Made with ❤️ at F22 Labs
+            <span
+              style={{
+                fontSize: "14px",
+                margin: "0px",
+                textDecoration: "underline",
+              }}
+            >
+              Made with ❤️ at F22 Labs
             </span>
           </a>
         </h1>

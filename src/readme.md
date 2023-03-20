@@ -5,6 +5,5 @@
 <!-- viedo === url; -->
 
 
-<!--  -->
-
+<!--   color and width should be customizable  -->
 

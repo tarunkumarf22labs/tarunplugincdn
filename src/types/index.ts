@@ -40,4 +40,5 @@ export interface CustomButtomprops{
   handleChange: (e: string) => void;
   handletoast : () => void;
   setPause ?: any
+  setCurrentTime ?: any
 }
