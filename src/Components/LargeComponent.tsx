@@ -56,6 +56,13 @@ function LargeComponent({
     }, 100);
   }, []);
 
+
+  const handleProgress = (e : any ) => {
+    if (isNaN(e.target.duration))   // duration is NotaNumber at Beginning.
+      return;
+      setCurrentTime((e.target.currentTime / e.target.duration) * 100);
+  };
+
   return (
     <div style={cssval as any} className="video-container">
       <div className="loader-container">
@@ -201,6 +208,7 @@ function LargeComponent({
 
         <video
           src={video}
+          onProgress={handleProgress}
           autoPlay
           ref={videoEl}
           className="lg-video-for-full"
