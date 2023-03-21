@@ -45,15 +45,15 @@ function LargeComponent({
 
 
 
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     let vals =
-  //       (videoEl.current!?.currentTime / videoEl.current!?.duration) * 96;
-  //        console.log(vals);
+  useEffect(() => {
+    setInterval(() => {
+      let vals =
+        (videoEl.current!?.currentTime / videoEl.current!?.duration) * 96;
+         console.log(vals);
          
-  //     setCurrentTime( () => vals);
-  //   }, 100);
-  // }, []);
+      setCurrentTime(vals);
+    }, 100);
+  }, []);
 
   // const handleProgress = (e: any) => {
   //   if (isNaN(e.target.duration))
