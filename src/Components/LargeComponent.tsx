@@ -42,7 +42,7 @@ function LargeComponent({
       setToast(false);
     }, 1000);
   }
- 
+
   const handleLoadedMetadata = () => {
     setCurrentTime(videoEl.current!.currentTime);
   };
@@ -56,11 +56,11 @@ function LargeComponent({
     }, 100);
   }, []);
 
-
-  const handleProgress = (e : any ) => {
-    if (isNaN(e.target.duration))   // duration is NotaNumber at Beginning.
+  const handleProgress = (e: any) => {
+    if (isNaN(e.target.duration))
+      // duration is NotaNumber at Beginning.
       return;
-      setCurrentTime((e.target.currentTime / e.target.duration) * 100);
+    setCurrentTime((e.target.currentTime / e.target.duration) * 100);
   };
 
   return (
@@ -214,6 +214,7 @@ function LargeComponent({
           className="lg-video-for-full"
           onLoadedMetadata={handleLoadedMetadata}
           playsInline
+          start={0}
         />
         {true ? (
           <div className="pausestyles" onClick={() => handlepause()}>
