@@ -75,10 +75,10 @@ function App({ dataURL }: { dataURL: string }): JSX.Element {
       }); 
 
 
-      let bin = handlenextkind(data)
-      handlestoragevals(data);
-      setdata(data);
-      setlocal(data[bin!][excatindex[0]?.count || 0]);
+      let bin = handlenextkind(data.record)
+      handlestoragevals(data.record);
+      setdata(data.record);
+      setlocal(data.record[bin!][excatindex[0]?.count || 0]);
     }
     data();
   }, []);
