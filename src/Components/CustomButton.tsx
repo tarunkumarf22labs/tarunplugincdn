@@ -19,7 +19,8 @@ function CustomButton({
   handleChange,
   handletoast,
   setPause,
-  setCurrentTime
+  setCurrentTime,
+  setShowPause
 }: CustomButtomprops) {
 
   let alphabetIcons = [
@@ -159,6 +160,7 @@ function CustomButton({
               <button
                 className={"overlay-thing-button"}
                 onClick={() => {handleChange(e.next);
+                  setShowPause(true)
                   setCurrentTime(0)
                   setPause(false)
                 }}

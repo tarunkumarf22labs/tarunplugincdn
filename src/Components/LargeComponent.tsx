@@ -20,8 +20,10 @@ function LargeComponent({
   const [toast, setToast] = useState(false);
   const [pause, setPause] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
+  const [showPause, setShowPause] = useState(true);
   function handlereplay() {
     videoEl.current!.currentTime = 0;
+    setShowPause(true);
     setPause(false);
     videoEl.current!.play();
   }
@@ -43,24 +45,20 @@ function LargeComponent({
     }, 1000);
   }
 
-
-
   useEffect(() => {
     setInterval(() => {
       let vals =
         (videoEl.current!?.currentTime / videoEl.current!?.duration) * 96;
-         console.log(vals);
-         
+
+      if (videoEl.current!?.currentTime >= videoEl.current!?.duration - 1) {
+        setShowPause(false);
+      }
+
       setCurrentTime(vals);
     }, 100);
   }, []);
 
-  // const handleProgress = (e: any) => {
-  //   if (isNaN(e.target.duration))
-  //     // duration is NotaNumber at Beginning.
-  //     return;
-  //   setCurrentTime((e.target.currentTime / e.target.duration) * 100);
-  // };
+
 
   return (
     <div style={cssval as any} className="video-container">
@@ -213,9 +211,8 @@ function LargeComponent({
           className="lg-video-for-full"
           playsInline
           start={0}
-
         />
-        {true ? (
+        {showPause ? (
           <div className="pausestyles" onClick={() => handlepause()}>
             {pause ? (
               <button className="pausestyles f22pluginpausevideos ">
@@ -239,6 +236,7 @@ function LargeComponent({
           handleChange={handleChange}
           handletoast={handletoast}
           setPause={setPause}
+          setShowPause = {setShowPause}
           setCurrentTime={setCurrentTime}
         />
         <h1

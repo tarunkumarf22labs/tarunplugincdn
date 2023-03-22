@@ -15,7 +15,7 @@ function SmallComponent({
   showcross,
   setShowcross,
 }: SmallComponentprops) {
-  let docref = doc(db, "f22plugin", "Ocenus.com");
+  let docref = doc(db, "f22plugin", "paperlondon.com");
   async function gettingdids() {
     const collectionref = collection(docref, "f22plugin");
     await addDoc(collectionref, { visited: 1, timestamp: Timestamp.now() });

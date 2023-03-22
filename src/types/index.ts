@@ -31,6 +31,7 @@ export interface SmallComponentprops {
   initalanimation : boolean
   showcross : boolean
   setShowcross : StateUpdater<boolean>
+
 }
 
 
@@ -40,5 +41,6 @@ export interface CustomButtomprops{
   handleChange: (e: string) => void;
   handletoast : () => void;
   setPause ?: any
-  setCurrentTime ?: any
+  setCurrentTime : StateUpdater<number>
+  setShowPause : StateUpdater<boolean>
 }
