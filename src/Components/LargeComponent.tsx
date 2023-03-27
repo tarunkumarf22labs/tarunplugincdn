@@ -248,7 +248,7 @@ function LargeComponent({
           }}
         >
           <a
-            href="https://api.whatsapp.com/send?phone=918870981553&text=Hello!%20saw%20your%20plugin%20on%20lappthebrand%20website.%20Interested%20to%20know%20more"
+            href="https://api.whatsapp.com/send?phone=918870981553&text=Hello!%20saw%20your%20plugin%20on%20Paper%20London%20website.%20Interested%20to%20know%20more"
             target="_blank"
           >
             {" "}
