@@ -250,7 +250,7 @@ function LargeComponent({
           }}
         >
           <a
-            href="https://wa.me/918870981553?text=Hello!%20saw%20your%20plugin%20on%20Paper%20london%20website.%20Interested%20to%20know%20more"
+            href="https://api.whatsapp.com/send?phone=918870981553&text=Hello!%20saw%20your%20plugin%20on%20Ocenus%20website.%20Interested%20to%20know%20more"
             target="_blank"
           >
             {" "}
