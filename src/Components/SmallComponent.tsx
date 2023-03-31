@@ -15,7 +15,7 @@ function SmallComponent({
   showcross,
   setShowcross,
 }: SmallComponentprops) {
-  let docref = doc(db, "f22plugin", "Ocenus.com");
+  let docref = doc(db, "f22plugin", "exibhitionexperts.com");
   async function gettingdids() {
     const collectionref = collection(docref, "f22plugin");
     await addDoc(collectionref, { visited: 1, timestamp: Timestamp.now() });
@@ -34,16 +34,14 @@ function SmallComponent({
     }
   }
   animationhandler();
-  let count = 1;
 
   async function handleClick() {
-  
 
     setShowcross(() => true);
     setinitialsize(true);
     gettingdids()
-
     onlocalchange();
+  
   }
 
   let animation = initalanimation ? "pageloadanimation" : "";
